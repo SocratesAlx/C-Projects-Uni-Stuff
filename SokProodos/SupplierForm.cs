@@ -139,5 +139,146 @@ namespace SokProodos
 
             this.Hide();
         }
+
+        private void buttonUpdate_Click(object sender, EventArgs e)
+        {
+            string supplierName = textBoxSupplierName.Text.Trim();
+            string website = textBoxWebsite.Text.Trim();
+            bool preferred = checkBoxPreferred.Checked;
+            bool active = checkBoxActive.Checked;
+
+            if (string.IsNullOrEmpty(supplierName))
+            {
+                MessageBox.Show("Please enter the Supplier Name to update the details.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (comboBoxCreditRating.SelectedItem == null)
+            {
+                MessageBox.Show("Please select a valid Credit Rating (1-5).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            int creditRating = (int)comboBoxCreditRating.SelectedItem;
+
+            string connectionString = @"Server=SOCHAX\SQLEXPRESS;Database=AdventureWorks2022;Trusted_Connection=True;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    SqlTransaction transaction = connection.BeginTransaction();
+
+                    // Step 1: Find Supplier ID
+                    string findSupplierQuery = @"
+                SELECT v.BusinessEntityID 
+                FROM Purchasing.Vendor v
+                WHERE v.Name = @SupplierName";
+
+                    int businessEntityId = 0;
+                    using (SqlCommand cmd = new SqlCommand(findSupplierQuery, connection, transaction))
+                    {
+                        cmd.Parameters.AddWithValue("@SupplierName", supplierName);
+
+                        object result = cmd.ExecuteScalar();
+                        if (result != null)
+                        {
+                            businessEntityId = Convert.ToInt32(result);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Supplier not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
+
+                    // Step 2: Update Supplier Information
+                    string updateSupplierQuery = @"
+                UPDATE Purchasing.Vendor
+                SET CreditRating = @CreditRating, 
+                    PreferredVendorStatus = @Preferred, 
+                    ActiveFlag = @Active, 
+                    PurchasingWebServiceURL = @Website,
+                    ModifiedDate = GETDATE()
+                WHERE BusinessEntityID = @BusinessEntityID";
+
+                    using (SqlCommand cmd = new SqlCommand(updateSupplierQuery, connection, transaction))
+                    {
+                        cmd.Parameters.AddWithValue("@BusinessEntityID", businessEntityId);
+                        cmd.Parameters.AddWithValue("@CreditRating", creditRating);
+                        cmd.Parameters.AddWithValue("@Preferred", preferred ? 1 : 0);
+                        cmd.Parameters.AddWithValue("@Active", active ? 1 : 0);
+                        cmd.Parameters.AddWithValue("@Website", string.IsNullOrWhiteSpace(website) ? (object)DBNull.Value : website);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    transaction.Commit();
+                    MessageBox.Show("Supplier details updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error updating supplier details: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+
+        private void buttonFill_Click(object sender, EventArgs e)
+        {
+            string supplierName = textBoxSupplierName.Text.Trim();
+
+            if (string.IsNullOrEmpty(supplierName))
+            {
+                MessageBox.Show("Please enter the Supplier Name to search.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string connectionString = @"Server=SOCHAX\SQLEXPRESS;Database=AdventureWorks2022;Trusted_Connection=True;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string query = @"
+                SELECT 
+                    v.BusinessEntityID, 
+                    v.CreditRating, 
+                    v.PreferredVendorStatus, 
+                    v.ActiveFlag, 
+                    v.PurchasingWebServiceURL 
+                FROM Purchasing.Vendor v
+                WHERE v.Name = @SupplierName";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@SupplierName", supplierName);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                comboBoxCreditRating.SelectedItem = Convert.ToInt32(reader["CreditRating"]);
+                                checkBoxPreferred.Checked = Convert.ToBoolean(reader["PreferredVendorStatus"]);
+                                checkBoxActive.Checked = Convert.ToBoolean(reader["ActiveFlag"]);
+                                textBoxWebsite.Text = reader["PurchasingWebServiceURL"] != DBNull.Value ? reader["PurchasingWebServiceURL"].ToString() : "";
+
+                                MessageBox.Show("Supplier data loaded successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Supplier not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error retrieving supplier data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
     }
 }

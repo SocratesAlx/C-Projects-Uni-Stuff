@@ -34,6 +34,7 @@ namespace SokProodos
 
 
 
+
         private void Button_MouseEnter(object sender, EventArgs e)
         {
             ((Button)sender).BackColor = Color.FromArgb(114, 137, 218); // Lighter blue on hover
@@ -46,6 +47,9 @@ namespace SokProodos
 
         private void LoadSalesTerritories()
         {
+            comboBoxTerritoryID.Items.Clear();
+            comboBoxTerritory.Items.Clear();
+
             string connectionString = @"Server=SOCHAX\SQLEXPRESS;Database=AdventureWorks2022;Trusted_Connection=True;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -60,13 +64,29 @@ namespace SokProodos
                     {
                         while (reader.Read())
                         {
-                            comboBoxTerritory.Items.Add(new KeyValuePair<int, string>(
-                                reader.GetInt32(0), reader.GetString(1)));
+                            int territoryID = reader.GetInt32(0);
+                            string territoryName = reader.GetString(1);
+
+                            // ✅ Populate both combo boxes with the same KeyValuePair
+                            KeyValuePair<int, string> territoryEntry = new KeyValuePair<int, string>(territoryID, territoryName);
+
+                            comboBoxTerritoryID.Items.Add(territoryEntry);
+                            comboBoxTerritory.Items.Add(territoryEntry);
                         }
                     }
 
-                    comboBoxTerritory.DisplayMember = "Value";
+                    comboBoxTerritoryID.DisplayMember = "Key"; // Show Territory ID in this box
+                    comboBoxTerritoryID.ValueMember = "Key";
+
+                    comboBoxTerritory.DisplayMember = "Value"; // Show Territory Name in this box
                     comboBoxTerritory.ValueMember = "Key";
+
+                    comboBoxTerritoryID.SelectedIndex = -1;
+                    comboBoxTerritory.SelectedIndex = -1;
+
+                    // ✅ Add event handlers for automatic sync
+                    comboBoxTerritory.SelectedIndexChanged += comboBoxTerritory_SelectedIndexChanged;
+                    comboBoxTerritoryID.SelectedIndexChanged += comboBoxTerritoryID_SelectedIndexChanged;
                 }
                 catch (Exception ex)
                 {
@@ -74,6 +94,8 @@ namespace SokProodos
                 }
             }
         }
+
+
 
         private void InsertSeller(string sellerName, decimal salesQuota, decimal bonus, decimal commissionPct, decimal salesYTD, decimal salesLastYear, int territoryId)
         {
@@ -161,47 +183,80 @@ VALUES (@BusinessEntityID, @NationalIDNumber, 'adventure-works\seller' + CAST(@B
         {
             string sellerName = textBoxSellerName.Text.Trim();
             decimal salesQuota, bonus, commissionPct, salesYTD, salesLastYear;
-            int territoryId = comboBoxTerritory.SelectedItem != null ? ((KeyValuePair<int, string>)comboBoxTerritory.SelectedItem).Key : 0;
 
-            // ✅ Validate Inputs
             if (string.IsNullOrWhiteSpace(sellerName))
             {
                 MessageBox.Show("Seller Name is required.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (!decimal.TryParse(textBoxSalesQuota.Text, out salesQuota) || salesQuota < 0)
+            if (!decimal.TryParse(textBoxSalesQuota.Text, out salesQuota) || salesQuota < 0 ||
+                !decimal.TryParse(textBoxBonus.Text, out bonus) || bonus < 0 ||
+                !decimal.TryParse(textBoxCommissionPct.Text, out commissionPct) || commissionPct < 0 || commissionPct > 1 ||
+                !decimal.TryParse(textBoxSalesYTD.Text, out salesYTD) || salesYTD < 0 ||
+                !decimal.TryParse(textBoxSalesLastYear.Text, out salesLastYear) || salesLastYear < 0)
             {
-                MessageBox.Show("Enter a valid Sales Quota.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please enter valid numeric values for financial fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (!decimal.TryParse(textBoxBonus.Text, out bonus) || bonus < 0)
+            // ✅ Validate TerritoryID from comboBoxTerritoryID
+            int territoryId = comboBoxTerritoryID.SelectedItem != null
+                ? ((KeyValuePair<int, string>)comboBoxTerritoryID.SelectedItem).Key
+                : 0;
+
+            if (territoryId <= 0)
             {
-                MessageBox.Show("Enter a valid Bonus Amount.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please select a valid Sales Territory.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (!decimal.TryParse(textBoxCommissionPct.Text, out commissionPct) || commissionPct < 0 || commissionPct > 1)
-            {
-                MessageBox.Show("Enter a valid Commission Percentage (0 to 1).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            string connectionString = @"Server=SOCHAX\SQLEXPRESS;Database=AdventureWorks2022;Trusted_Connection=True;";
 
-            if (!decimal.TryParse(textBoxSalesYTD.Text, out salesYTD) || salesYTD < 0)
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                MessageBox.Show("Enter a valid Sales Year-To-Date.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+                try
+                {
+                    connection.Open();
 
-            if (!decimal.TryParse(textBoxSalesLastYear.Text, out salesLastYear) || salesLastYear < 0)
-            {
-                MessageBox.Show("Enter a valid Sales Last Year.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+                    string insertQuery = @"
+                INSERT INTO Sales.SalesPerson (BusinessEntityID, SalesQuota, Bonus, CommissionPct, SalesYTD, SalesLastYear, TerritoryID, rowguid, ModifiedDate)
+                VALUES (@SellerID, @SalesQuota, @Bonus, @CommissionPct, @SalesYTD, @SalesLastYear, @TerritoryID, NEWID(), GETDATE());";
 
-            InsertSeller(sellerName, salesQuota, bonus, commissionPct, salesYTD, salesLastYear, territoryId);
+                    using (SqlCommand cmd = new SqlCommand(insertQuery, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@SellerID", textBoxSellerID.Text); // Ensure this is populated correctly
+                        cmd.Parameters.AddWithValue("@SalesQuota", salesQuota);
+                        cmd.Parameters.AddWithValue("@Bonus", bonus);
+                        cmd.Parameters.AddWithValue("@CommissionPct", commissionPct);
+                        cmd.Parameters.AddWithValue("@SalesYTD", salesYTD);
+                        cmd.Parameters.AddWithValue("@SalesLastYear", salesLastYear);
+                        cmd.Parameters.AddWithValue("@TerritoryID", territoryId);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    MessageBox.Show("Seller added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Reset Fields
+                    textBoxSellerID.Clear();
+                    textBoxSellerName.Clear();
+                    textBoxSalesQuota.Clear();
+                    textBoxBonus.Clear();
+                    textBoxCommissionPct.Clear();
+                    textBoxSalesYTD.Clear();
+                    textBoxSalesLastYear.Clear();
+                    comboBoxTerritoryID.SelectedIndex = -1;
+                    comboBoxTerritory.SelectedIndex = -1;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error adding seller: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
+
+
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -210,6 +265,175 @@ VALUES (@BusinessEntityID, @NationalIDNumber, 'adventure-works\seller' + CAST(@B
 
 
             this.Hide();
+        }
+
+        private void comboBoxTerritoryID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxTerritoryID.SelectedItem != null)
+            {
+                int selectedTerritoryID = ((KeyValuePair<int, string>)comboBoxTerritoryID.SelectedItem).Key;
+
+                // ✅ Sync the Territory combo box
+                comboBoxTerritory.SelectedItem = comboBoxTerritory.Items.Cast<KeyValuePair<int, string>>()
+                    .FirstOrDefault(kvp => kvp.Key == selectedTerritoryID);
+            }
+        }
+
+        private void buttonUpdate_Click(object sender, EventArgs e)
+        {
+            if (!int.TryParse(textBoxSellerID.Text.Trim(), out int sellerID))
+            {
+                MessageBox.Show("Please enter a valid Seller ID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            decimal salesQuota, bonus, commissionPct, salesYTD, salesLastYear;
+
+            if (!decimal.TryParse(textBoxSalesQuota.Text, out salesQuota) || salesQuota < 0 ||
+                !decimal.TryParse(textBoxBonus.Text, out bonus) || bonus < 0 ||
+                !decimal.TryParse(textBoxCommissionPct.Text, out commissionPct) || commissionPct < 0 || commissionPct > 1 ||
+                !decimal.TryParse(textBoxSalesYTD.Text, out salesYTD) || salesYTD < 0 ||
+                !decimal.TryParse(textBoxSalesLastYear.Text, out salesLastYear) || salesLastYear < 0)
+            {
+                MessageBox.Show("Please enter valid numeric values.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            int territoryId = comboBoxTerritoryID.SelectedItem != null
+                ? ((KeyValuePair<int, string>)comboBoxTerritoryID.SelectedItem).Key
+                : 0;
+
+            string connectionString = @"Server=SOCHAX\SQLEXPRESS;Database=AdventureWorks2022;Trusted_Connection=True;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string updateQuery = @"
+                UPDATE Sales.SalesPerson
+                SET SalesQuota = @SalesQuota, Bonus = @Bonus, CommissionPct = @CommissionPct,
+                    SalesYTD = @SalesYTD, SalesLastYear = @SalesLastYear, TerritoryID = @TerritoryID, ModifiedDate = GETDATE()
+                WHERE BusinessEntityID = @SellerID";
+
+                    using (SqlCommand cmd = new SqlCommand(updateQuery, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@SellerID", sellerID);
+                        cmd.Parameters.AddWithValue("@SalesQuota", salesQuota);
+                        cmd.Parameters.AddWithValue("@Bonus", bonus);
+                        cmd.Parameters.AddWithValue("@CommissionPct", commissionPct);
+                        cmd.Parameters.AddWithValue("@SalesYTD", salesYTD);
+                        cmd.Parameters.AddWithValue("@SalesLastYear", salesLastYear);
+                        cmd.Parameters.AddWithValue("@TerritoryID", territoryId);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    MessageBox.Show("Seller updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error updating seller: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+
+        private void buttonFill_Click(object sender, EventArgs e)
+        {
+            if (!int.TryParse(textBoxSellerID.Text.Trim(), out int sellerID))
+            {
+                MessageBox.Show("Please enter a valid Seller ID to search.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string connectionString = @"Server=SOCHAX\SQLEXPRESS;Database=AdventureWorks2022;Trusted_Connection=True;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string query = @"
+                SELECT 
+                    sp.BusinessEntityID,
+                    p.FirstName + ' ' + p.LastName AS SellerName,
+                    sp.SalesQuota,
+                    sp.Bonus,
+                    sp.CommissionPct,
+                    sp.SalesYTD,
+                    sp.SalesLastYear,
+                    sp.TerritoryID
+                FROM Sales.SalesPerson sp
+                JOIN Person.Person p ON sp.BusinessEntityID = p.BusinessEntityID
+                WHERE sp.BusinessEntityID = @SellerID;";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@SellerID", sellerID);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                textBoxSellerName.Text = reader["SellerName"].ToString();
+                                textBoxSalesQuota.Text = reader["SalesQuota"].ToString();
+                                textBoxBonus.Text = reader["Bonus"].ToString();
+                                textBoxCommissionPct.Text = reader["CommissionPct"].ToString();
+                                textBoxSalesYTD.Text = reader["SalesYTD"].ToString();
+                                textBoxSalesLastYear.Text = reader["SalesLastYear"].ToString();
+
+                                // ✅ Get TerritoryID
+                                if (reader["TerritoryID"] != DBNull.Value)
+                                {
+                                    int territoryID = Convert.ToInt32(reader["TerritoryID"]);
+
+                                    // ✅ Select the correct Territory ID in comboBoxTerritoryID
+                                    comboBoxTerritoryID.SelectedItem = comboBoxTerritoryID.Items.Cast<KeyValuePair<int, string>>()
+                                        .FirstOrDefault(kvp => kvp.Key == territoryID);
+
+                                    // ✅ Select the correct Territory Name in comboBoxTerritory
+                                    comboBoxTerritory.SelectedItem = comboBoxTerritory.Items.Cast<KeyValuePair<int, string>>()
+                                        .FirstOrDefault(kvp => kvp.Key == territoryID);
+                                }
+                                else
+                                {
+                                    comboBoxTerritoryID.SelectedIndex = -1;
+                                    comboBoxTerritory.SelectedIndex = -1;
+                                }
+
+                                MessageBox.Show("Seller data loaded successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Seller not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error retrieving seller data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+
+
+        private void textBoxSellerID_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxTerritory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxTerritory.SelectedItem != null)
+            {
+                int selectedTerritoryID = ((KeyValuePair<int, string>)comboBoxTerritory.SelectedItem).Key;
+
+                // ✅ Sync the TerritoryID combo box
+                comboBoxTerritoryID.SelectedItem = comboBoxTerritoryID.Items.Cast<KeyValuePair<int, string>>()
+                    .FirstOrDefault(kvp => kvp.Key == selectedTerritoryID);
+            }
         }
     }
 }

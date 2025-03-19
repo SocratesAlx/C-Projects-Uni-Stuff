@@ -80,24 +80,24 @@ namespace SokProodos
                 {
                     connection.Open();
                     string query = @"
-                        SELECT 
-                            sp.BusinessEntityID,
-                            p.FirstName + ' ' + p.LastName AS SellerName,
-                            sp.SalesQuota,
-                            sp.Bonus,
-                            sp.CommissionPct,
-                            sp.SalesYTD,
-                            sp.SalesLastYear,
-                            st.Name AS Territory,
-                            e.NationalIDNumber,
-                            e.LoginID,
-                            e.JobTitle,
-                            e.HireDate
-                        FROM Sales.SalesPerson sp
-                        JOIN Person.Person p ON sp.BusinessEntityID = p.BusinessEntityID
-                        LEFT JOIN Sales.SalesTerritory st ON sp.TerritoryID = st.TerritoryID
-                        LEFT JOIN HumanResources.Employee e ON sp.BusinessEntityID = e.BusinessEntityID
-                        WHERE sp.BusinessEntityID = @SellerID;";
+                SELECT 
+                    sp.BusinessEntityID AS 'Seller ID',  
+                    p.FirstName + ' ' + p.LastName AS 'Seller Name',
+                    sp.SalesQuota AS 'Sales Quota',
+                    sp.Bonus AS 'Bonus',
+                    sp.CommissionPct AS 'Commission %',
+                    sp.SalesYTD AS 'Sales YTD',
+                    sp.SalesLastYear AS 'Sales Last Year',
+                    st.Name AS 'Territory',
+                    e.NationalIDNumber AS 'National ID',
+                    e.LoginID AS 'Login ID',
+                    e.JobTitle AS 'Job Title',
+                    e.HireDate AS 'Hire Date'
+                FROM Sales.SalesPerson sp
+                JOIN Person.Person p ON sp.BusinessEntityID = p.BusinessEntityID
+                LEFT JOIN Sales.SalesTerritory st ON sp.TerritoryID = st.TerritoryID
+                LEFT JOIN HumanResources.Employee e ON sp.BusinessEntityID = e.BusinessEntityID
+                WHERE sp.BusinessEntityID = @SellerID;";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -109,6 +109,13 @@ namespace SokProodos
 
                             // Assign data to DataGridView
                             dataGridViewSellerInfo.DataSource = dt;
+
+                            // ✅ Ensure `Seller ID` column is visible and properly formatted
+                            if (dataGridViewSellerInfo.Columns["Seller ID"] != null)
+                            {
+                                dataGridViewSellerInfo.Columns["Seller ID"].DisplayIndex = 0;  // Move `Seller ID` to first column
+                                dataGridViewSellerInfo.Columns["Seller ID"].Width = 80;       // Set column width for better readability
+                            }
                         }
                     }
                 }
@@ -118,6 +125,7 @@ namespace SokProodos
                 }
             }
         }
+
 
 
 

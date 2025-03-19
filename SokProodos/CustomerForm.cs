@@ -296,6 +296,225 @@ namespace SokProodos
 
             this.Hide();
         }
+
+        private void buttonUpdate_Click(object sender, EventArgs e)
+        {
+            string firstName = textBoxFirstName.Text.Trim();
+            string lastName = textBoxLastName.Text.Trim();
+            string billingAddress = textBoxBillingAddress.Text.Trim();
+            string city = textBoxCity.Text.Trim();
+            string postalCode = textBoxPostalCode.Text.Trim();
+            string email = textBoxEmail.Text.Trim();
+            string phone = textBoxPhone.Text.Trim();
+
+            if (string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName))
+            {
+                MessageBox.Show("Please enter First Name and Last Name to search for the customer.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (comboBoxState.SelectedItem == null)
+            {
+                MessageBox.Show("Please select a valid state!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            int stateProvinceId = ((KeyValuePair<int, string>)comboBoxState.SelectedItem).Key;
+
+            string connectionString = @"Server=SOCHAX\SQLEXPRESS;Database=AdventureWorks2022;Trusted_Connection=True;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    SqlTransaction transaction = connection.BeginTransaction();
+
+                    // Step 1: Find Customer ID
+                    string findCustomerQuery = @"
+                SELECT c.CustomerID, p.BusinessEntityID, a.AddressID
+                FROM Sales.Customer c
+                JOIN Person.Person p ON c.PersonID = p.BusinessEntityID
+                LEFT JOIN Person.BusinessEntityAddress bea ON c.PersonID = bea.BusinessEntityID
+                LEFT JOIN Person.Address a ON bea.AddressID = a.AddressID
+                WHERE p.FirstName = @FirstName AND p.LastName = @LastName";
+
+                    int customerId = 0, businessEntityId = 0, addressId = 0;
+                    using (SqlCommand cmd = new SqlCommand(findCustomerQuery, connection, transaction))
+                    {
+                        cmd.Parameters.AddWithValue("@FirstName", firstName);
+                        cmd.Parameters.AddWithValue("@LastName", lastName);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                customerId = Convert.ToInt32(reader["CustomerID"]);
+                                businessEntityId = Convert.ToInt32(reader["BusinessEntityID"]);
+                                addressId = reader["AddressID"] != DBNull.Value ? Convert.ToInt32(reader["AddressID"]) : 0;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Customer not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                        }
+                    }
+
+                    // Step 2: Update Address
+                    if (addressId > 0)
+                    {
+                        string updateAddressQuery = @"
+                    UPDATE Person.Address
+                    SET AddressLine1 = @Address, City = @City, StateProvinceID = @StateProvinceID, PostalCode = @PostalCode
+                    WHERE AddressID = @AddressID";
+
+                        using (SqlCommand cmd = new SqlCommand(updateAddressQuery, connection, transaction))
+                        {
+                            cmd.Parameters.AddWithValue("@Address", billingAddress);
+                            cmd.Parameters.AddWithValue("@City", city);
+                            cmd.Parameters.AddWithValue("@StateProvinceID", stateProvinceId);
+                            cmd.Parameters.AddWithValue("@PostalCode", postalCode);
+                            cmd.Parameters.AddWithValue("@AddressID", addressId);
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+
+                    // Step 3: Update Customer Name
+                    string updateCustomerQuery = @"
+                UPDATE Person.Person
+                SET FirstName = @FirstName, LastName = @LastName
+                WHERE BusinessEntityID = @BusinessEntityID";
+
+                    using (SqlCommand cmd = new SqlCommand(updateCustomerQuery, connection, transaction))
+                    {
+                        cmd.Parameters.AddWithValue("@FirstName", firstName);
+                        cmd.Parameters.AddWithValue("@LastName", lastName);
+                        cmd.Parameters.AddWithValue("@BusinessEntityID", businessEntityId);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    // Step 4: Update or Insert Email
+                    string emailQuery = @"
+                IF EXISTS (SELECT 1 FROM Person.EmailAddress WHERE BusinessEntityID = @BusinessEntityID)
+                    UPDATE Person.EmailAddress 
+                    SET EmailAddress = @Email 
+                    WHERE BusinessEntityID = @BusinessEntityID;
+                ELSE
+                    INSERT INTO Person.EmailAddress (BusinessEntityID, EmailAddress) 
+                    VALUES (@BusinessEntityID, @Email);";
+
+                    using (SqlCommand cmd = new SqlCommand(emailQuery, connection, transaction))
+                    {
+                        cmd.Parameters.AddWithValue("@BusinessEntityID", businessEntityId);
+                        cmd.Parameters.AddWithValue("@Email", string.IsNullOrWhiteSpace(email) ? DBNull.Value : (object)email);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    // Step 5: Update or Insert Phone Number
+                    string phoneQuery = @"
+                IF EXISTS (SELECT 1 FROM Person.PersonPhone WHERE BusinessEntityID = @BusinessEntityID)
+                    UPDATE Person.PersonPhone 
+                    SET PhoneNumber = @PhoneNumber 
+                    WHERE BusinessEntityID = @BusinessEntityID;
+                ELSE
+                    INSERT INTO Person.PersonPhone (BusinessEntityID, PhoneNumber, PhoneNumberTypeID) 
+                    VALUES (@BusinessEntityID, @PhoneNumber, 1);";  // 1 = Cell Phone
+
+                    using (SqlCommand cmd = new SqlCommand(phoneQuery, connection, transaction))
+                    {
+                        cmd.Parameters.AddWithValue("@BusinessEntityID", businessEntityId);
+                        cmd.Parameters.AddWithValue("@PhoneNumber", string.IsNullOrWhiteSpace(phone) ? DBNull.Value : (object)phone);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    transaction.Commit();
+                    MessageBox.Show("Customer details updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error updating customer details: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+
+        private void buttonFill_Click(object sender, EventArgs e)
+        {
+            string firstName = textBoxFirstName.Text.Trim();
+            string lastName = textBoxLastName.Text.Trim();
+
+            if (string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName))
+            {
+                MessageBox.Show("Please enter First Name and Last Name to search.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string connectionString = @"Server=SOCHAX\SQLEXPRESS;Database=AdventureWorks2022;Trusted_Connection=True;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string query = @"
+                SELECT 
+                    c.CustomerID, 
+                    p.FirstName, 
+                    p.LastName, 
+                    a.AddressLine1, 
+                    a.City, 
+                    a.PostalCode, 
+                    sp.StateProvinceID,
+                    e.EmailAddress, 
+                    ph.PhoneNumber 
+                FROM Sales.Customer c
+                JOIN Person.Person p ON c.PersonID = p.BusinessEntityID
+                LEFT JOIN Person.BusinessEntityAddress bea ON c.PersonID = bea.BusinessEntityID
+                LEFT JOIN Person.Address a ON bea.AddressID = a.AddressID
+                LEFT JOIN Person.StateProvince sp ON a.StateProvinceID = sp.StateProvinceID
+                LEFT JOIN Person.EmailAddress e ON p.BusinessEntityID = e.BusinessEntityID
+                LEFT JOIN Person.PersonPhone ph ON p.BusinessEntityID = ph.BusinessEntityID
+                WHERE p.FirstName = @FirstName AND p.LastName = @LastName";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@FirstName", firstName);
+                        command.Parameters.AddWithValue("@LastName", lastName);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                textBoxBillingAddress.Text = reader["AddressLine1"].ToString();
+                                textBoxCity.Text = reader["City"].ToString();
+                                textBoxPostalCode.Text = reader["PostalCode"].ToString();
+                                textBoxEmail.Text = reader["EmailAddress"] != DBNull.Value ? reader["EmailAddress"].ToString() : "";
+                                textBoxPhone.Text = reader["PhoneNumber"] != DBNull.Value ? reader["PhoneNumber"].ToString() : "";
+
+                                int stateId = reader["StateProvinceID"] != DBNull.Value ? Convert.ToInt32(reader["StateProvinceID"]) : -1;
+                                if (stateId > 0)
+                                {
+                                    comboBoxState.SelectedIndex = comboBoxState.FindStringExact(comboBoxState.Items.Cast<KeyValuePair<int, string>>()
+                                        .FirstOrDefault(kvp => kvp.Key == stateId).Value);
+                                }
+
+                                MessageBox.Show("Customer data loaded successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Customer not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error retrieving customer data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 }
+
 
