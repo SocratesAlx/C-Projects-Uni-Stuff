@@ -16,23 +16,23 @@ namespace SokProodos
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.FormBorderStyle = FormBorderStyle.None; // Remove border
-            this.ShowInTaskbar = false; // Hide from taskbar
+            this.FormBorderStyle = FormBorderStyle.None; 
+            this.ShowInTaskbar = false; 
         }
 
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            Task.Run(() => SimulateLoading()); // Run loading in background
+            Task.Run(() => SimulateLoading()); 
         }
 
         private async void SimulateLoading()
         {
-            await Task.Delay(3000); // Simulate 3 seconds loading
+            await Task.Delay(1000); 
 
-            if (this.IsHandleCreated && !this.IsDisposed) // Ensure the form is still active
+            if (this.IsHandleCreated && !this.IsDisposed) 
             {
-                this.Invoke(new Action(() => this.Close())); // Close the loading form safely
+                this.Invoke(new Action(() => this.Close())); 
             }
         }
 

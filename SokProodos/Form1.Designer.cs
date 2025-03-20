@@ -62,13 +62,14 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Snow;
             this.button1.Location = new System.Drawing.Point(97, 153);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(144, 34);
             this.button1.TabIndex = 4;
-            this.button1.Text = "LOG IN";
+            this.button1.Text = "Log In";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -112,21 +113,22 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(-6, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(456, 74);
+            this.panel1.Size = new System.Drawing.Size(456, 55);
             this.panel1.TabIndex = 10;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(121, 18);
+            this.label1.Location = new System.Drawing.Point(129, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(239, 39);
+            this.label1.Size = new System.Drawing.Size(208, 39);
             this.label1.TabIndex = 0;
-            this.label1.Text = "USER LOGIN";
+            this.label1.Text = "User Log-In";
             // 
             // label2
             // 
@@ -143,7 +145,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(449, 450);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);

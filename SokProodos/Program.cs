@@ -19,4 +19,10 @@ namespace SokProodos
             Application.Run(new Form1());
         }
     }
+
+    public static class GlobalSession
+    {
+        public static string LoggedInUser { get; set; }
+    }
+
 }

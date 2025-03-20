@@ -18,6 +18,8 @@ namespace SokProodos
         {
             InitializeComponent();
             dbConnection = new ConnectToDB();
+
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -37,6 +39,8 @@ namespace SokProodos
 
             if (dbConnection.CheckLogin(username, password))
             {
+                GlobalSession.LoggedInUser = username;  // ✅ Store the username globally
+
                 MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 using (LoadingScreen loadingScreen = new LoadingScreen())
@@ -55,6 +59,7 @@ namespace SokProodos
                 MessageBox.Show("Invalid username or password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
 
 

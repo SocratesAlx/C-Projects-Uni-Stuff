@@ -30,6 +30,7 @@ namespace SokProodos
             LoadOrderChart();
             LoadStockChart();
             LoadTopProductsChart();
+            LoadCurrentUser();
             Timer timer = new Timer();
             timer.Interval = 1000; 
             timer.Tick += Timer_Tick;
@@ -38,19 +39,39 @@ namespace SokProodos
             labelClock.Font = new Font("Consolas", 12, FontStyle.Bold);
             labelClock.ForeColor = Color.White;
 
-
+            Label labelCurrentUser = new Label
+            {
+                Text = "Current User: Loading...",
+                Font = new Font("Consolas", 12, FontStyle.Bold),
+                ForeColor = Color.White,
+                Location = new Point(20, 20),  // Adjust as needed
+                AutoSize = true
+            };
+            this.Controls.Add(labelCurrentUser);
 
         }
 
-        protected override void OnPaint(PaintEventArgs e)
+        //protected override void OnPaint(PaintEventArgs e)
+        //{
+        // using (LinearGradientBrush brush = new LinearGradientBrush(
+        //this.ClientRectangle,
+        //Color.FromArgb(15, 25, 80),   // Darker Desaturated Blue (Top)
+        //Color.FromArgb(40, 100, 150), // Muted Light Blue (Bottom)
+        //LinearGradientMode.Vertical))
+        // {
+        // e.Graphics.FillRectangle(brush, this.ClientRectangle);
+        //}
+        // }
+
+        private void LoadCurrentUser()
         {
-            using (LinearGradientBrush brush = new LinearGradientBrush(
-                this.ClientRectangle,
-                Color.FromArgb(15, 25, 80),   // Darker Desaturated Blue (Top)
-                Color.FromArgb(40, 100, 150), // Muted Light Blue (Bottom)
-                LinearGradientMode.Vertical))
+            if (!string.IsNullOrEmpty(GlobalSession.LoggedInUser))
             {
-                e.Graphics.FillRectangle(brush, this.ClientRectangle);
+                labelCurrentUser.Text = "Current User: " + GlobalSession.LoggedInUser;
+            }
+            else
+            {
+                labelCurrentUser.Text = "Current User: Not Found";
             }
         }
 

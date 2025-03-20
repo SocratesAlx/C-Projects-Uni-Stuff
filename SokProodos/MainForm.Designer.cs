@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelMainMenu = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -45,21 +45,22 @@
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.labelCurrentUser = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // labelMainMenu
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(412, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(209, 37);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "MAIN MENU";
+            this.labelMainMenu.AutoSize = true;
+            this.labelMainMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMainMenu.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.labelMainMenu.Location = new System.Drawing.Point(417, 6);
+            this.labelMainMenu.Name = "labelMainMenu";
+            this.labelMainMenu.Size = new System.Drawing.Size(183, 37);
+            this.labelMainMenu.TabIndex = 0;
+            this.labelMainMenu.Text = "Main Menu";
             // 
             // button1
             // 
@@ -119,7 +120,7 @@
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(13, 630);
+            this.button5.Location = new System.Drawing.Point(13, 647);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(90, 34);
             this.button5.TabIndex = 8;
@@ -132,7 +133,7 @@
             this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(13, 439);
+            this.button6.Location = new System.Drawing.Point(841, 143);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(177, 30);
             this.button6.TabIndex = 9;
@@ -145,7 +146,7 @@
             this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(13, 388);
+            this.button7.Location = new System.Drawing.Point(841, 104);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(177, 33);
             this.button7.TabIndex = 10;
@@ -158,7 +159,7 @@
             this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(13, 490);
+            this.button8.Location = new System.Drawing.Point(841, 179);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(177, 34);
             this.button8.TabIndex = 11;
@@ -169,17 +170,21 @@
             // labelClock
             // 
             this.labelClock.AutoSize = true;
+            this.labelClock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.labelClock.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelClock.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelClock.Location = new System.Drawing.Point(731, 661);
+            this.labelClock.Location = new System.Drawing.Point(705, 19);
             this.labelClock.Name = "labelClock";
             this.labelClock.Size = new System.Drawing.Size(0, 20);
             this.labelClock.TabIndex = 12;
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlText;
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.labelCurrentUser);
+            this.panel1.Controls.Add(this.labelMainMenu);
+            this.panel1.Controls.Add(this.labelClock);
             this.panel1.Location = new System.Drawing.Point(1, 1);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1074, 51);
@@ -194,7 +199,7 @@
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.groupBox1.Location = new System.Drawing.Point(12, 101);
+            this.groupBox1.Location = new System.Drawing.Point(8, 80);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(192, 214);
             this.groupBox1.TabIndex = 14;
@@ -262,21 +267,32 @@
             this.groupBox2.Controls.Add(this.button11);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBox2.Location = new System.Drawing.Point(814, 114);
+            this.groupBox2.Location = new System.Drawing.Point(8, 300);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(195, 217);
             this.groupBox2.TabIndex = 19;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Information";
             // 
+            // labelCurrentUser
+            // 
+            this.labelCurrentUser.AutoSize = true;
+            this.labelCurrentUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.labelCurrentUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCurrentUser.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelCurrentUser.Location = new System.Drawing.Point(24, 11);
+            this.labelCurrentUser.Name = "labelCurrentUser";
+            this.labelCurrentUser.Size = new System.Drawing.Size(76, 25);
+            this.labelCurrentUser.TabIndex = 20;
+            this.labelCurrentUser.Text = "label1";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.GrayText;
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1030, 690);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.labelClock);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button8);
@@ -290,13 +306,12 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelMainMenu;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
@@ -313,5 +328,6 @@
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label labelCurrentUser;
     }
 }
