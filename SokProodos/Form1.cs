@@ -24,7 +24,7 @@ namespace SokProodos
 
         private void checkBoxShowPassword_CheckedChanged(object sender, EventArgs e)
         {
-            // ✅ Toggle Password Visibility
+            
             textBox2.UseSystemPasswordChar = !checkBoxShowPassword.Checked;
         }
 
@@ -48,14 +48,14 @@ namespace SokProodos
 
             if (dbConnection.CheckLogin(username, password))
             {
-                GlobalSession.LoggedInUser = username;  // ✅ Store the username globally
+                GlobalSession.LoggedInUser = username;  
 
-                MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Login successful!\nWelcome to the AdventureWorks2022 Management App!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 using (LoadingScreen loadingScreen = new LoadingScreen())
                 {
                     loadingScreen.Show();
-                    await Task.Delay(1500);
+                    await Task.Delay(1000);
                     loadingScreen.Close();
                 }
 
@@ -65,7 +65,7 @@ namespace SokProodos
             }
             else
             {
-                MessageBox.Show("Invalid username or password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Invalid username or password!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

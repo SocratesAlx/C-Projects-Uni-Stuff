@@ -51,16 +51,18 @@
             this.comboBoxTerritoryID = new System.Windows.Forms.ComboBox();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.buttonFill = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // labelSellerName
             // 
             this.labelSellerName.AutoSize = true;
-            this.labelSellerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSellerName.Location = new System.Drawing.Point(31, 19);
+            this.labelSellerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSellerName.Location = new System.Drawing.Point(25, 25);
             this.labelSellerName.Name = "labelSellerName";
-            this.labelSellerName.Size = new System.Drawing.Size(93, 16);
+            this.labelSellerName.Size = new System.Drawing.Size(95, 20);
             this.labelSellerName.TabIndex = 0;
             this.labelSellerName.Text = "Seller Name";
             // 
@@ -74,10 +76,10 @@
             // labelSalesQuota
             // 
             this.labelSalesQuota.AutoSize = true;
-            this.labelSalesQuota.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSalesQuota.Location = new System.Drawing.Point(32, 54);
+            this.labelSalesQuota.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSalesQuota.Location = new System.Drawing.Point(26, 60);
             this.labelSalesQuota.Name = "labelSalesQuota";
-            this.labelSalesQuota.Size = new System.Drawing.Size(92, 16);
+            this.labelSalesQuota.Size = new System.Drawing.Size(97, 20);
             this.labelSalesQuota.TabIndex = 2;
             this.labelSalesQuota.Text = "Sales Quota";
             // 
@@ -91,10 +93,10 @@
             // labelBonus
             // 
             this.labelBonus.AutoSize = true;
-            this.labelBonus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBonus.Location = new System.Drawing.Point(25, 89);
+            this.labelBonus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelBonus.Location = new System.Drawing.Point(18, 91);
             this.labelBonus.Name = "labelBonus";
-            this.labelBonus.Size = new System.Drawing.Size(105, 16);
+            this.labelBonus.Size = new System.Drawing.Size(115, 20);
             this.labelBonus.TabIndex = 4;
             this.labelBonus.Text = "Bonus Amount";
             // 
@@ -108,10 +110,10 @@
             // labelCommissionPct
             // 
             this.labelCommissionPct.AutoSize = true;
-            this.labelCommissionPct.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCommissionPct.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCommissionPct.Location = new System.Drawing.Point(19, 129);
             this.labelCommissionPct.Name = "labelCommissionPct";
-            this.labelCommissionPct.Size = new System.Drawing.Size(118, 16);
+            this.labelCommissionPct.Size = new System.Drawing.Size(123, 20);
             this.labelCommissionPct.TabIndex = 6;
             this.labelCommissionPct.Text = "Commission (%)";
             // 
@@ -125,10 +127,10 @@
             // labelSalesYTD
             // 
             this.labelSalesYTD.AutoSize = true;
-            this.labelSalesYTD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSalesYTD.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSalesYTD.Location = new System.Drawing.Point(18, 170);
             this.labelSalesYTD.Name = "labelSalesYTD";
-            this.labelSalesYTD.Size = new System.Drawing.Size(118, 16);
+            this.labelSalesYTD.Size = new System.Drawing.Size(120, 20);
             this.labelSalesYTD.TabIndex = 8;
             this.labelSalesYTD.Text = "Sales This Year";
             // 
@@ -142,10 +144,10 @@
             // labelSalesLastYear
             // 
             this.labelSalesLastYear.AutoSize = true;
-            this.labelSalesLastYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSalesLastYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSalesLastYear.Location = new System.Drawing.Point(18, 207);
             this.labelSalesLastYear.Name = "labelSalesLastYear";
-            this.labelSalesLastYear.Size = new System.Drawing.Size(117, 16);
+            this.labelSalesLastYear.Size = new System.Drawing.Size(122, 20);
             this.labelSalesLastYear.TabIndex = 10;
             this.labelSalesLastYear.Text = "Sales Last Year";
             // 
@@ -159,10 +161,10 @@
             // labelTerritory
             // 
             this.labelTerritory.AutoSize = true;
-            this.labelTerritory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTerritory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTerritory.Location = new System.Drawing.Point(25, 243);
             this.labelTerritory.Name = "labelTerritory";
-            this.labelTerritory.Size = new System.Drawing.Size(110, 16);
+            this.labelTerritory.Size = new System.Drawing.Size(110, 20);
             this.labelTerritory.TabIndex = 12;
             this.labelTerritory.Text = "Sales Territory";
             // 
@@ -179,7 +181,7 @@
             // 
             this.buttonSaveSeller.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.buttonSaveSeller.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSaveSeller.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSaveSeller.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSaveSeller.Location = new System.Drawing.Point(680, 398);
             this.buttonSaveSeller.Name = "buttonSaveSeller";
             this.buttonSaveSeller.Size = new System.Drawing.Size(169, 41);
@@ -232,10 +234,10 @@
             // labelSellerID
             // 
             this.labelSellerID.AutoSize = true;
-            this.labelSellerID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSellerID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSellerID.Location = new System.Drawing.Point(35, 324);
             this.labelSellerID.Name = "labelSellerID";
-            this.labelSellerID.Size = new System.Drawing.Size(67, 16);
+            this.labelSellerID.Size = new System.Drawing.Size(70, 20);
             this.labelSellerID.TabIndex = 17;
             this.labelSellerID.Text = "Seller ID";
             // 
@@ -250,10 +252,10 @@
             // labelTerritoryID
             // 
             this.labelTerritoryID.AutoSize = true;
-            this.labelTerritoryID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTerritoryID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTerritoryID.Location = new System.Drawing.Point(32, 282);
             this.labelTerritoryID.Name = "labelTerritoryID";
-            this.labelTerritoryID.Size = new System.Drawing.Size(85, 16);
+            this.labelTerritoryID.Size = new System.Drawing.Size(87, 20);
             this.labelTerritoryID.TabIndex = 15;
             this.labelTerritoryID.Text = "Territory ID";
             // 
@@ -270,7 +272,7 @@
             // 
             this.buttonUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.buttonUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonUpdate.Location = new System.Drawing.Point(680, 342);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(169, 36);
@@ -281,9 +283,9 @@
             // 
             // buttonFill
             // 
-            this.buttonFill.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.buttonFill.BackColor = System.Drawing.Color.DodgerBlue;
             this.buttonFill.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFill.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonFill.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonFill.Location = new System.Drawing.Point(680, 47);
             this.buttonFill.Name = "buttonFill";
             this.buttonFill.Size = new System.Drawing.Size(169, 33);
@@ -291,6 +293,16 @@
             this.buttonFill.Text = "Search";
             this.buttonFill.UseVisualStyleBackColor = false;
             this.buttonFill.Click += new System.EventHandler(this.buttonFill_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::SokProodos.Properties.Resources.pngwing_com__19_;
+            this.pictureBox1.Location = new System.Drawing.Point(-2, -77);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(865, 449);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 19;
+            this.pictureBox1.TabStop = false;
             // 
             // SellersForm
             // 
@@ -303,10 +315,12 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonSaveSeller);
+            this.Controls.Add(this.pictureBox1);
             this.Name = "SellersForm";
             this.Text = "SellersForm";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -336,5 +350,6 @@
         private System.Windows.Forms.Button buttonFill;
         private System.Windows.Forms.Label labelSellerID;
         private System.Windows.Forms.TextBox textBoxSellerID;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

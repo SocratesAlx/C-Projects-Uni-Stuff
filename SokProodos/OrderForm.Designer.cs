@@ -57,9 +57,11 @@
             this.buttonFindBillingAddress = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewInvoiceItems)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBoxCustomer
@@ -73,20 +75,20 @@
             // labelCustomer
             // 
             this.labelCustomer.AutoSize = true;
-            this.labelCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCustomer.Location = new System.Drawing.Point(12, 22);
             this.labelCustomer.Name = "labelCustomer";
-            this.labelCustomer.Size = new System.Drawing.Size(72, 16);
+            this.labelCustomer.Size = new System.Drawing.Size(78, 20);
             this.labelCustomer.TabIndex = 1;
             this.labelCustomer.Text = "Customer";
             // 
             // labelBillingAddress
             // 
             this.labelBillingAddress.AutoSize = true;
-            this.labelBillingAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelBillingAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelBillingAddress.Location = new System.Drawing.Point(12, 58);
             this.labelBillingAddress.Name = "labelBillingAddress";
-            this.labelBillingAddress.Size = new System.Drawing.Size(112, 16);
+            this.labelBillingAddress.Size = new System.Drawing.Size(113, 20);
             this.labelBillingAddress.TabIndex = 2;
             this.labelBillingAddress.Text = "Billing Address";
             // 
@@ -100,10 +102,10 @@
             // labelOrderDate
             // 
             this.labelOrderDate.AutoSize = true;
-            this.labelOrderDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelOrderDate.Location = new System.Drawing.Point(15, 96);
+            this.labelOrderDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelOrderDate.Location = new System.Drawing.Point(12, 96);
             this.labelOrderDate.Name = "labelOrderDate";
-            this.labelOrderDate.Size = new System.Drawing.Size(83, 16);
+            this.labelOrderDate.Size = new System.Drawing.Size(88, 20);
             this.labelOrderDate.TabIndex = 4;
             this.labelOrderDate.Text = "Order Date";
             // 
@@ -117,10 +119,10 @@
             // labelDueDate
             // 
             this.labelDueDate.AutoSize = true;
-            this.labelDueDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDueDate.Location = new System.Drawing.Point(15, 133);
+            this.labelDueDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDueDate.Location = new System.Drawing.Point(12, 133);
             this.labelDueDate.Name = "labelDueDate";
-            this.labelDueDate.Size = new System.Drawing.Size(72, 16);
+            this.labelDueDate.Size = new System.Drawing.Size(78, 20);
             this.labelDueDate.TabIndex = 6;
             this.labelDueDate.Text = "Due Date";
             // 
@@ -134,10 +136,10 @@
             // labelSeller
             // 
             this.labelSeller.AutoSize = true;
-            this.labelSeller.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSeller.Location = new System.Drawing.Point(15, 166);
+            this.labelSeller.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSeller.Location = new System.Drawing.Point(12, 165);
             this.labelSeller.Name = "labelSeller";
-            this.labelSeller.Size = new System.Drawing.Size(48, 16);
+            this.labelSeller.Size = new System.Drawing.Size(49, 20);
             this.labelSeller.TabIndex = 8;
             this.labelSeller.Text = "Seller";
             // 
@@ -152,10 +154,10 @@
             // labelShipMethod
             // 
             this.labelShipMethod.AutoSize = true;
-            this.labelShipMethod.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelShipMethod.Location = new System.Drawing.Point(15, 201);
+            this.labelShipMethod.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelShipMethod.Location = new System.Drawing.Point(13, 203);
             this.labelShipMethod.Name = "labelShipMethod";
-            this.labelShipMethod.Size = new System.Drawing.Size(93, 16);
+            this.labelShipMethod.Size = new System.Drawing.Size(99, 20);
             this.labelShipMethod.TabIndex = 10;
             this.labelShipMethod.Text = "Ship Method";
             // 
@@ -170,10 +172,10 @@
             // labelProduct
             // 
             this.labelProduct.AutoSize = true;
-            this.labelProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelProduct.Location = new System.Drawing.Point(15, 234);
+            this.labelProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelProduct.Location = new System.Drawing.Point(14, 237);
             this.labelProduct.Name = "labelProduct";
-            this.labelProduct.Size = new System.Drawing.Size(60, 16);
+            this.labelProduct.Size = new System.Drawing.Size(64, 20);
             this.labelProduct.TabIndex = 12;
             this.labelProduct.Text = "Product";
             // 
@@ -188,10 +190,10 @@
             // labelQuantity
             // 
             this.labelQuantity.AutoSize = true;
-            this.labelQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelQuantity.Location = new System.Drawing.Point(17, 276);
+            this.labelQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelQuantity.Location = new System.Drawing.Point(13, 277);
             this.labelQuantity.Name = "labelQuantity";
-            this.labelQuantity.Size = new System.Drawing.Size(63, 16);
+            this.labelQuantity.Size = new System.Drawing.Size(68, 20);
             this.labelQuantity.TabIndex = 14;
             this.labelQuantity.Text = "Quantity";
             // 
@@ -213,10 +215,10 @@
             // labelSpecialOffer
             // 
             this.labelSpecialOffer.AutoSize = true;
-            this.labelSpecialOffer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSpecialOffer.Location = new System.Drawing.Point(15, 316);
+            this.labelSpecialOffer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSpecialOffer.Location = new System.Drawing.Point(11, 315);
             this.labelSpecialOffer.Name = "labelSpecialOffer";
-            this.labelSpecialOffer.Size = new System.Drawing.Size(97, 16);
+            this.labelSpecialOffer.Size = new System.Drawing.Size(101, 20);
             this.labelSpecialOffer.TabIndex = 17;
             this.labelSpecialOffer.Text = "Special Offer";
             // 
@@ -231,10 +233,10 @@
             // labelTotalPrice
             // 
             this.labelTotalPrice.AutoSize = true;
-            this.labelTotalPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTotalPrice.Location = new System.Drawing.Point(17, 362);
+            this.labelTotalPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTotalPrice.Location = new System.Drawing.Point(12, 357);
             this.labelTotalPrice.Name = "labelTotalPrice";
-            this.labelTotalPrice.Size = new System.Drawing.Size(83, 16);
+            this.labelTotalPrice.Size = new System.Drawing.Size(83, 20);
             this.labelTotalPrice.TabIndex = 19;
             this.labelTotalPrice.Text = "Total Price";
             // 
@@ -249,7 +251,7 @@
             // 
             this.buttonAddToOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.buttonAddToOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAddToOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAddToOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAddToOrder.Location = new System.Drawing.Point(835, 452);
             this.buttonAddToOrder.Name = "buttonAddToOrder";
             this.buttonAddToOrder.Size = new System.Drawing.Size(169, 44);
@@ -262,7 +264,7 @@
             // 
             this.buttonCompleteOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.buttonCompleteOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCompleteOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCompleteOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCompleteOrder.Location = new System.Drawing.Point(835, 506);
             this.buttonCompleteOrder.Name = "buttonCompleteOrder";
             this.buttonCompleteOrder.Size = new System.Drawing.Size(169, 44);
@@ -300,7 +302,7 @@
             // 
             this.buttonFindBillingAddress.BackColor = System.Drawing.Color.DodgerBlue;
             this.buttonFindBillingAddress.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFindBillingAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonFindBillingAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonFindBillingAddress.Location = new System.Drawing.Point(12, 419);
             this.buttonFindBillingAddress.Name = "buttonFindBillingAddress";
             this.buttonFindBillingAddress.Size = new System.Drawing.Size(178, 40);
@@ -350,6 +352,16 @@
             this.pictureBox1.TabIndex = 26;
             this.pictureBox1.TabStop = false;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::SokProodos.Properties.Resources.pngwing_com__19_;
+            this.pictureBox2.Location = new System.Drawing.Point(-29, -145);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(1064, 624);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 27;
+            this.pictureBox2.TabStop = false;
+            // 
             // OrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -363,12 +375,14 @@
             this.Controls.Add(this.buttonCompleteOrder);
             this.Controls.Add(this.buttonAddToOrder);
             this.Controls.Add(this.dataGridViewInvoiceItems);
+            this.Controls.Add(this.pictureBox2);
             this.Name = "OrderForm";
             this.Text = "OrderForm";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewInvoiceItems)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -404,5 +418,6 @@
         private System.Windows.Forms.Button buttonFindBillingAddress;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

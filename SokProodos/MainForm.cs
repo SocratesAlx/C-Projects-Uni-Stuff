@@ -77,8 +77,8 @@ namespace SokProodos
         {
             Panel panelDashboard = new Panel
             {
-                Size = new Size(750, 500),
-                Location = new Point(200, 100), // Move panel lower
+                Size = new Size(650, 500), // Adjust width to match buttons
+                Location = new Point(220, 150), // Center panel better
                 BackColor = Color.Transparent
             };
             this.Controls.Add(panelDashboard);
@@ -93,24 +93,29 @@ namespace SokProodos
             };
             panelDashboard.Controls.Add(lblDashboard);
 
+            // ✅ Top Left Chart (Orders)
             Chart chartOrders = CreateChart("chartOrders", "Orders", SeriesChartType.Column, Color.DodgerBlue);
-            chartOrders.Location = new Point(10, 120);  // Move down
-            chartOrders.Size = new Size(300, 200);
+            chartOrders.Location = new Point(10, 100);
+            chartOrders.Size = new Size(310, 200); // Ensures width matches other charts
             panelDashboard.Controls.Add(chartOrders);
 
+            // ✅ Top Right Chart (Stock)
             Chart chartStock = CreateChart("chartStock", "Stock", SeriesChartType.Pie, Color.Orange);
             chartStock.Series["Stock"]["PieLabelStyle"] = "Disabled";
             chartStock.Legends[0].Enabled = true;
             chartStock.Legends[0].Docking = Docking.Bottom;
-            chartStock.Location = new Point(320, 120);  // Move down
-            chartStock.Size = new Size(280, 200);
+            chartStock.Location = new Point(330, 100);  // Aligns with Orders chart
+            chartStock.Size = new Size(310, 200);
             panelDashboard.Controls.Add(chartStock);
 
+            // ✅ Bottom Chart (Top Products) — **Now Properly Sized!**
             Chart chartTopProducts = CreateChart("chartTopProducts", "TopProducts", SeriesChartType.Bar, Color.MediumSeaGreen);
-            chartTopProducts.Location = new Point(10, 350); // Move further down
-            chartTopProducts.Size = new Size(600, 150);
+            chartTopProducts.Location = new Point(10, 320); // Move down for symmetry
+            chartTopProducts.Size = new Size(630, 150);  // Matches top charts’ combined width
             panelDashboard.Controls.Add(chartTopProducts);
         }
+
+
 
 
         private Chart CreateChart(string name, string seriesName, SeriesChartType chartType, Color color)
@@ -184,9 +189,9 @@ namespace SokProodos
             {
                 DataPoint point = hit.Series.Points[hit.PointIndex];
 
-                // 🔹 Brighten Color & Enlarge
+                // 🔹 Brighten color and increase size
                 point.Color = ControlPaint.Light(point.Color);
-                point.MarkerSize = 10;  
+                point.MarkerSize = 12;
             }
         }
 
@@ -199,7 +204,7 @@ namespace SokProodos
             {
                 foreach (var point in series.Points)
                 {
-                    
+                    // 🔹 Restore to default color and size
                     point.Color = series.Color;
                     point.MarkerSize = 5;
                 }

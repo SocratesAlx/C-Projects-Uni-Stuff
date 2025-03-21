@@ -43,26 +43,28 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.buttonFill = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // labelSupplierName
             // 
             this.labelSupplierName.AutoSize = true;
-            this.labelSupplierName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSupplierName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSupplierName.Location = new System.Drawing.Point(31, 41);
             this.labelSupplierName.Name = "labelSupplierName";
-            this.labelSupplierName.Size = new System.Drawing.Size(126, 20);
+            this.labelSupplierName.Size = new System.Drawing.Size(113, 20);
             this.labelSupplierName.TabIndex = 0;
             this.labelSupplierName.Text = "Supplier Name";
             // 
             // labelCreditRating
             // 
             this.labelCreditRating.AutoSize = true;
-            this.labelCreditRating.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCreditRating.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCreditRating.Location = new System.Drawing.Point(32, 102);
             this.labelCreditRating.Name = "labelCreditRating";
-            this.labelCreditRating.Size = new System.Drawing.Size(115, 20);
+            this.labelCreditRating.Size = new System.Drawing.Size(102, 20);
             this.labelCreditRating.TabIndex = 1;
             this.labelCreditRating.Text = "Credit Rating";
             // 
@@ -78,16 +80,16 @@
             this.comboBoxCreditRating.FormattingEnabled = true;
             this.comboBoxCreditRating.Location = new System.Drawing.Point(183, 94);
             this.comboBoxCreditRating.Name = "comboBoxCreditRating";
-            this.comboBoxCreditRating.Size = new System.Drawing.Size(121, 24);
+            this.comboBoxCreditRating.Size = new System.Drawing.Size(127, 24);
             this.comboBoxCreditRating.TabIndex = 3;
             // 
             // labelPreferred
             // 
             this.labelPreferred.AutoSize = true;
-            this.labelPreferred.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPreferred.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelPreferred.Location = new System.Drawing.Point(33, 157);
             this.labelPreferred.Name = "labelPreferred";
-            this.labelPreferred.Size = new System.Drawing.Size(147, 20);
+            this.labelPreferred.Size = new System.Drawing.Size(131, 20);
             this.labelPreferred.TabIndex = 4;
             this.labelPreferred.Text = "Preferred Vendor";
             // 
@@ -103,10 +105,10 @@
             // labelActive
             // 
             this.labelActive.AutoSize = true;
-            this.labelActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelActive.Location = new System.Drawing.Point(34, 207);
             this.labelActive.Name = "labelActive";
-            this.labelActive.Size = new System.Drawing.Size(129, 20);
+            this.labelActive.Size = new System.Drawing.Size(114, 20);
             this.labelActive.TabIndex = 6;
             this.labelActive.Text = "Active Supplier";
             // 
@@ -122,10 +124,10 @@
             // labelWebsite
             // 
             this.labelWebsite.AutoSize = true;
-            this.labelWebsite.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelWebsite.Location = new System.Drawing.Point(61, 270);
+            this.labelWebsite.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWebsite.Location = new System.Drawing.Point(34, 270);
             this.labelWebsite.Name = "labelWebsite";
-            this.labelWebsite.Size = new System.Drawing.Size(74, 20);
+            this.labelWebsite.Size = new System.Drawing.Size(67, 20);
             this.labelWebsite.TabIndex = 8;
             this.labelWebsite.Text = "Website";
             // 
@@ -133,14 +135,14 @@
             // 
             this.textBoxWebsite.Location = new System.Drawing.Point(183, 270);
             this.textBoxWebsite.Name = "textBoxWebsite";
-            this.textBoxWebsite.Size = new System.Drawing.Size(121, 22);
+            this.textBoxWebsite.Size = new System.Drawing.Size(127, 22);
             this.textBoxWebsite.TabIndex = 9;
             // 
             // buttonSaveSupplier
             // 
             this.buttonSaveSupplier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.buttonSaveSupplier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSaveSupplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSaveSupplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSaveSupplier.Location = new System.Drawing.Point(644, 399);
             this.buttonSaveSupplier.Name = "buttonSaveSupplier";
             this.buttonSaveSupplier.Size = new System.Drawing.Size(144, 39);
@@ -186,10 +188,10 @@
             // 
             this.buttonUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.buttonUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonUpdate.Location = new System.Drawing.Point(644, 359);
+            this.buttonUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonUpdate.Location = new System.Drawing.Point(644, 355);
             this.buttonUpdate.Name = "buttonUpdate";
-            this.buttonUpdate.Size = new System.Drawing.Size(144, 34);
+            this.buttonUpdate.Size = new System.Drawing.Size(144, 38);
             this.buttonUpdate.TabIndex = 13;
             this.buttonUpdate.Text = "Update Supplier";
             this.buttonUpdate.UseVisualStyleBackColor = false;
@@ -197,16 +199,26 @@
             // 
             // buttonFill
             // 
-            this.buttonFill.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.buttonFill.BackColor = System.Drawing.Color.DodgerBlue;
             this.buttonFill.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFill.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonFill.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonFill.Location = new System.Drawing.Point(644, 34);
             this.buttonFill.Name = "buttonFill";
             this.buttonFill.Size = new System.Drawing.Size(144, 32);
             this.buttonFill.TabIndex = 14;
-            this.buttonFill.Text = "SEARCH";
+            this.buttonFill.Text = "Search";
             this.buttonFill.UseVisualStyleBackColor = false;
             this.buttonFill.Click += new System.EventHandler(this.buttonFill_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::SokProodos.Properties.Resources.pngwing_com__19_;
+            this.pictureBox1.Location = new System.Drawing.Point(-9, -23);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(829, 391);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 15;
+            this.pictureBox1.TabStop = false;
             // 
             // SupplierForm
             // 
@@ -219,10 +231,12 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonSaveSupplier);
+            this.Controls.Add(this.pictureBox1);
             this.Name = "SupplierForm";
             this.Text = "SupplierForm";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -244,5 +258,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button buttonUpdate;
         private System.Windows.Forms.Button buttonFill;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

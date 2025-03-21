@@ -103,6 +103,16 @@ namespace SokProodos.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap load_8510_256 {
+            get {
+                object obj = ResourceManager.GetObject("load-8510_256", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pngwing_com__12_ {
             get {
                 object obj = ResourceManager.GetObject("pngwing.com (12)", resourceCulture);
@@ -136,6 +146,46 @@ namespace SokProodos.Properties {
         internal static System.Drawing.Bitmap pngwing_com__16_ {
             get {
                 object obj = ResourceManager.GetObject("pngwing.com (16)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pngwing_com__17_ {
+            get {
+                object obj = ResourceManager.GetObject("pngwing.com (17)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pngwing_com__18_ {
+            get {
+                object obj = ResourceManager.GetObject("pngwing.com (18)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pngwing_com__19_ {
+            get {
+                object obj = ResourceManager.GetObject("pngwing.com (19)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pngwing_com__20_ {
+            get {
+                object obj = ResourceManager.GetObject("pngwing.com (20)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

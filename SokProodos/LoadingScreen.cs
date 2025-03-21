@@ -28,13 +28,19 @@ namespace SokProodos
 
         private async void SimulateLoading()
         {
-            await Task.Delay(1000); 
+            await Task.Delay(1000);
 
-            if (this.IsHandleCreated && !this.IsDisposed) 
+            if (!this.IsDisposed && this.IsHandleCreated)
             {
-                this.Invoke(new Action(() => this.Close())); 
+                this.Invoke(new Action(() =>
+                {
+                    this.Hide();
+                    this.Dispose();  // Ensure disposal after hiding
+                }));
             }
         }
+
+
 
 
 

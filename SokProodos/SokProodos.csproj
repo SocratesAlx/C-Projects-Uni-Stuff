@@ -235,5 +235,20 @@
   <ItemGroup>
     <None Include="Resources\awc_logo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pngwing.com %2817%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pngwing.com %2818%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\load-8510_256.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pngwing.com %2819%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pngwing.com %2820%29.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
