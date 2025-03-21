@@ -44,24 +44,14 @@ namespace SokProodos
                 Text = "Current User: Loading...",
                 Font = new Font("Consolas", 12, FontStyle.Bold),
                 ForeColor = Color.White,
-                Location = new Point(20, 20),  // Adjust as needed
+                Location = new Point(20, 20),  
                 AutoSize = true
             };
             this.Controls.Add(labelCurrentUser);
 
         }
 
-        //protected override void OnPaint(PaintEventArgs e)
-        //{
-        // using (LinearGradientBrush brush = new LinearGradientBrush(
-        //this.ClientRectangle,
-        //Color.FromArgb(15, 25, 80),   // Darker Desaturated Blue (Top)
-        //Color.FromArgb(40, 100, 150), // Muted Light Blue (Bottom)
-        //LinearGradientMode.Vertical))
-        // {
-        // e.Graphics.FillRectangle(brush, this.ClientRectangle);
-        //}
-        // }
+        
 
         private void LoadCurrentUser()
         {
@@ -85,47 +75,43 @@ namespace SokProodos
 
         private void InitializeDashboard()
         {
-            
             Panel panelDashboard = new Panel
             {
-                Size = new Size(750, 400),  
-                Location = new Point(200, 50),
+                Size = new Size(750, 500),
+                Location = new Point(200, 100), // Move panel lower
                 BackColor = Color.Transparent
             };
             this.Controls.Add(panelDashboard);
 
-            
             Label lblDashboard = new Label
             {
                 Text = "📊 Business Dashboard",
                 Font = new Font("Arial", 16, FontStyle.Bold),
                 ForeColor = Color.White,
-                Location = new Point(10, 5),
+                Location = new Point(10, 10),
                 AutoSize = true
             };
             panelDashboard.Controls.Add(lblDashboard);
 
-            
             Chart chartOrders = CreateChart("chartOrders", "Orders", SeriesChartType.Column, Color.DodgerBlue);
-            chartOrders.Location = new Point(10, 40);
-            chartOrders.Size = new Size(300, 200);  
+            chartOrders.Location = new Point(10, 120);  // Move down
+            chartOrders.Size = new Size(300, 200);
             panelDashboard.Controls.Add(chartOrders);
 
-            
             Chart chartStock = CreateChart("chartStock", "Stock", SeriesChartType.Pie, Color.Orange);
-            chartStock.Series["Stock"]["PieLabelStyle"] = "Disabled"; 
+            chartStock.Series["Stock"]["PieLabelStyle"] = "Disabled";
             chartStock.Legends[0].Enabled = true;
-            chartStock.Legends[0].Docking = Docking.Bottom;  
-            chartStock.Location = new Point(320, 40);
-            chartStock.Size = new Size(280, 200); 
+            chartStock.Legends[0].Docking = Docking.Bottom;
+            chartStock.Location = new Point(320, 120);  // Move down
+            chartStock.Size = new Size(280, 200);
             panelDashboard.Controls.Add(chartStock);
 
-            
             Chart chartTopProducts = CreateChart("chartTopProducts", "TopProducts", SeriesChartType.Bar, Color.MediumSeaGreen);
-            chartTopProducts.Location = new Point(10, 250);
-            chartTopProducts.Size = new Size(600, 150);  
+            chartTopProducts.Location = new Point(10, 350); // Move further down
+            chartTopProducts.Size = new Size(600, 150);
             panelDashboard.Controls.Add(chartTopProducts);
         }
+
 
         private Chart CreateChart(string name, string seriesName, SeriesChartType chartType, Color color)
         {
@@ -133,48 +119,95 @@ namespace SokProodos
             {
                 Name = name,
                 Size = new Size(320, 200),
-                BackColor = Color.FromArgb(50, 50, 50),  
+                BackColor = Color.FromArgb(20, 40, 80),  // 🔹 Keep Blue Theme
                 ForeColor = Color.White
             };
+
             ChartArea area = new ChartArea("MainArea")
             {
                 BackColor = Color.Transparent
             };
-            area.AxisX.LabelStyle.ForeColor = Color.White;
-            area.AxisX.LabelStyle.Font = new Font("Arial", 9, FontStyle.Bold);
-            area.AxisY.LabelStyle.ForeColor = Color.White;
-            area.AxisY.LabelStyle.Font = new Font("Arial", 9, FontStyle.Bold);
 
-            
-            area.AxisX.LabelStyle.Angle = chartType == SeriesChartType.Bar ? 0 : -45;
+            // 🔹 Improve Axis Visibility
+            area.AxisX.LineColor = Color.LightGray;
+            area.AxisX.LabelStyle.ForeColor = Color.White;
+            area.AxisX.MajorGrid.LineColor = Color.FromArgb(60, 120, 180);
+
+            area.AxisY.LineColor = Color.LightGray;
+            area.AxisY.LabelStyle.ForeColor = Color.White;
+            area.AxisY.MajorGrid.LineColor = Color.FromArgb(60, 120, 180);
 
             chart.ChartAreas.Add(area);
+
             Series series = new Series(seriesName)
             {
                 ChartType = chartType,
-                Color = color
+                Color = color,
+                BorderWidth = 2
             };
-            chart.Series.Add(series);
-
-            
-            series["DrawingStyle"] = "Cylinder"; 
-            series["PieDrawingStyle"] = "Concave"; 
-            series["PixelPointWidth"] = chartType == SeriesChartType.Bar ? "50" : "100";
 
             
             series.ToolTip = "#VALX: #VALY";
+
+            
+            if (chartType == SeriesChartType.Pie)
+            {
+                series["PieDrawingStyle"] = "SoftEdge";
+                chart.Series.Add(series);
+            }
+            else
+            {
+                chart.Series.Add(series);
+            }
 
             chart.Legends.Add(new Legend("Legend")
             {
                 ForeColor = Color.White,
                 BackColor = Color.Transparent,
-                Docking = Docking.Bottom  
+                Docking = Docking.Bottom
             });
+
+            
+            chart.MouseMove += Chart_MouseMove;
+            chart.MouseLeave += Chart_MouseLeave;
 
             return chart;
         }
 
-        
+        private void Chart_MouseMove(object sender, MouseEventArgs e)
+        {
+            Chart chart = sender as Chart;
+            if (chart == null) return;
+
+            HitTestResult hit = chart.HitTest(e.X, e.Y);
+            if (hit.ChartElementType == ChartElementType.DataPoint)
+            {
+                DataPoint point = hit.Series.Points[hit.PointIndex];
+
+                // 🔹 Brighten Color & Enlarge
+                point.Color = ControlPaint.Light(point.Color);
+                point.MarkerSize = 10;  
+            }
+        }
+
+        private void Chart_MouseLeave(object sender, EventArgs e)
+        {
+            Chart chart = sender as Chart;
+            if (chart == null) return;
+
+            foreach (var series in chart.Series)
+            {
+                foreach (var point in series.Points)
+                {
+                    
+                    point.Color = series.Color;
+                    point.MarkerSize = 5;
+                }
+            }
+        }
+
+
+
         private void LoadOrderChart()
         {
             using (SqlConnection connection = new SqlConnection(connectionString))

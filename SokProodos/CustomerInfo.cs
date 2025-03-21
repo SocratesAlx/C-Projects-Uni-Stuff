@@ -24,18 +24,7 @@ namespace SokProodos
             
             comboBoxCustomers.SelectedIndexChanged += new EventHandler(comboBoxCustomers_SelectedIndexChanged);
         }
-
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            using (LinearGradientBrush brush = new LinearGradientBrush(
-                this.ClientRectangle,
-                Color.FromArgb(45, 50, 60),  // Dark Grey
-                Color.FromArgb(150, 155, 165), // Lighter Grey
-                LinearGradientMode.Vertical))
-            {
-                e.Graphics.FillRectangle(brush, this.ClientRectangle);
-            }
-        }
+       
 
         private void LoadCustomers()
         {

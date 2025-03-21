@@ -46,7 +46,7 @@
             this.dataGridViewOrderHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewOrderHistory.Location = new System.Drawing.Point(364, 22);
             this.dataGridViewOrderHistory.Name = "dataGridViewOrderHistory";
-            this.dataGridViewOrderHistory.Size = new System.Drawing.Size(670, 430);
+            this.dataGridViewOrderHistory.Size = new System.Drawing.Size(670, 401);
             this.dataGridViewOrderHistory.TabIndex = 0;
             this.dataGridViewOrderHistory.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewOrderHistory_CellContentClick);
             // 
@@ -55,7 +55,7 @@
             this.buttonClose_Click.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.buttonClose_Click.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose_Click.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonClose_Click.Location = new System.Drawing.Point(45, 480);
+            this.buttonClose_Click.Location = new System.Drawing.Point(31, 388);
             this.buttonClose_Click.Name = "buttonClose_Click";
             this.buttonClose_Click.Size = new System.Drawing.Size(95, 35);
             this.buttonClose_Click.TabIndex = 1;
@@ -91,7 +91,7 @@
             // 
             this.labelYear.AutoSize = true;
             this.labelYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelYear.Location = new System.Drawing.Point(23, 27);
+            this.labelYear.Location = new System.Drawing.Point(11, 19);
             this.labelYear.Name = "labelYear";
             this.labelYear.Size = new System.Drawing.Size(47, 20);
             this.labelYear.TabIndex = 5;
@@ -101,7 +101,7 @@
             // 
             this.labelMonth.AutoSize = true;
             this.labelMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMonth.Location = new System.Drawing.Point(23, 75);
+            this.labelMonth.Location = new System.Drawing.Point(11, 65);
             this.labelMonth.Name = "labelMonth";
             this.labelMonth.Size = new System.Drawing.Size(59, 20);
             this.labelMonth.TabIndex = 6;
@@ -119,7 +119,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.groupBox1.Controls.Add(this.comboBoxYear);
             this.groupBox1.Controls.Add(this.labelCustomer);
             this.groupBox1.Controls.Add(this.comboBoxMonth);
@@ -127,9 +127,9 @@
             this.groupBox1.Controls.Add(this.comboBoxCustomer);
             this.groupBox1.Controls.Add(this.labelYear);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBox1.Location = new System.Drawing.Point(31, 34);
+            this.groupBox1.Location = new System.Drawing.Point(31, 39);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(296, 158);
+            this.groupBox1.Size = new System.Drawing.Size(296, 153);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             // 
@@ -137,7 +137,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1074, 540);
+            this.ClientSize = new System.Drawing.Size(1074, 452);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonClose_Click);
             this.Controls.Add(this.dataGridViewOrderHistory);

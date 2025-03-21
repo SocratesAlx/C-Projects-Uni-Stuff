@@ -24,25 +24,45 @@ namespace SokProodos
             
             InitializeComponent();
             LoadStockHistory();
-        }
-
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            using (LinearGradientBrush brush = new LinearGradientBrush(
-                this.ClientRectangle,
-                Color.FromArgb(45, 50, 60),   // **Dark Grey at the Top**
-                Color.FromArgb(150, 155, 165), // **Lighter Grey at the Bottom**
-                LinearGradientMode.Vertical)) // **Vertical transition**
-            {
-                e.Graphics.FillRectangle(brush, this.ClientRectangle);
-            }
-        }
-
-
+            LoadProductNames();
+        }  
 
         private void Button_MouseEnter(object sender, EventArgs e)
         {
             ((Button)sender).BackColor = Color.FromArgb(114, 137, 218); // Lighter blue on hover
+        }
+
+        private void LoadProductNames()
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT ProductID, Name FROM Production.Product WHERE FinishedGoodsFlag = 1";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        comboBoxProductName.Items.Clear();
+                        while (reader.Read())
+                        {
+                            int productId = reader.GetInt32(0);
+                            string productName = reader.GetString(1);
+                            comboBoxProductName.Items.Add(new KeyValuePair<int, string>(productId, productName));
+                        }
+                    }
+
+                    comboBoxProductName.DisplayMember = "Value";
+                    comboBoxProductName.ValueMember = "Key";
+                    comboBoxProductName.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                    comboBoxProductName.AutoCompleteSource = AutoCompleteSource.ListItems;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading product names: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void Button_MouseLeave(object sender, EventArgs e)
@@ -50,7 +70,7 @@ namespace SokProodos
             ((Button)sender).BackColor = Color.FromArgb(88, 101, 242); // Normal state
         }
 
-        private void LoadStockHistory()
+        private void LoadStockHistory(string productNameFilter = "", int productIdFilter = 0)
         {
             if (dataGridViewStockHistory == null)
             {
@@ -72,17 +92,36 @@ namespace SokProodos
                     pi.ModifiedDate AS LastUpdated
                 FROM Production.ProductInventory pi
                 JOIN Production.Product p ON pi.ProductID = p.ProductID
-                WHERE p.FinishedGoodsFlag = 1  -- ✅ Only include finished goods
-                ORDER BY pi.ModifiedDate DESC";
+                WHERE p.FinishedGoodsFlag = 1";
+
+                    if (!string.IsNullOrWhiteSpace(productNameFilter))
+                    {
+                        query += " AND p.Name LIKE @ProductName";
+                    }
+
+                    if (productIdFilter > 0)
+                    {
+                        query += " AND p.ProductID = @ProductID";
+                    }
+
+                    query += " ORDER BY pi.ModifiedDate DESC";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                     {
-                        DataTable dt = new DataTable();
-                        adapter.Fill(dt);
-
-                        if (dataGridViewStockHistory != null)
+                        if (!string.IsNullOrWhiteSpace(productNameFilter))
                         {
+                            command.Parameters.AddWithValue("@ProductName", "%" + productNameFilter + "%");
+                        }
+
+                        if (productIdFilter > 0)
+                        {
+                            command.Parameters.AddWithValue("@ProductID", productIdFilter);
+                        }
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                        {
+                            DataTable dt = new DataTable();
+                            adapter.Fill(dt);
                             dataGridViewStockHistory.DataSource = dt;
                         }
                     }
@@ -93,6 +132,7 @@ namespace SokProodos
                 MessageBox.Show($"Error loading stock history: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
 
         private void button1_Click(object sender, EventArgs e)
@@ -107,6 +147,24 @@ namespace SokProodos
         private void buttonReresh_Click(object sender, EventArgs e)
         {
             LoadStockHistory();
+        }
+
+        private void comboBoxProductName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxProductName.SelectedItem != null)
+            {
+                var selectedProduct = (KeyValuePair<int, string>)comboBoxProductName.SelectedItem;
+                textBoxProductID.Text = selectedProduct.Key.ToString(); 
+                LoadStockHistory(selectedProduct.Value, selectedProduct.Key);
+            }
+        }
+
+        private void textBoxProductID_TextChanged(object sender, EventArgs e)
+        {
+            if (int.TryParse(textBoxProductID.Text, out int productId))
+            {
+                LoadStockHistory("", productId);
+            }
         }
     }
 }

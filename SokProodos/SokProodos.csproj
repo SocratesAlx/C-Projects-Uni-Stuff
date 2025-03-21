@@ -226,5 +226,14 @@
   <ItemGroup>
     <None Include="Resources\Justicon-Free-Simple-Line-Plan-Planning-Management-Chart-Business.512.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Justicon-Free-Simple-Line-Upload-Server-Arrow-Data-Network-Database.512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Custom-Icon-Design-Flatastic-1-Information.512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\awc_logo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

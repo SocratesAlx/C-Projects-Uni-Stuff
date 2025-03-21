@@ -76,14 +76,14 @@
             // 
             this.textBoxFirstName.Location = new System.Drawing.Point(208, 31);
             this.textBoxFirstName.Name = "textBoxFirstName";
-            this.textBoxFirstName.Size = new System.Drawing.Size(130, 20);
+            this.textBoxFirstName.Size = new System.Drawing.Size(130, 22);
             this.textBoxFirstName.TabIndex = 2;
             // 
             // textBoxLastName
             // 
             this.textBoxLastName.Location = new System.Drawing.Point(208, 81);
             this.textBoxLastName.Name = "textBoxLastName";
-            this.textBoxLastName.Size = new System.Drawing.Size(130, 20);
+            this.textBoxLastName.Size = new System.Drawing.Size(130, 22);
             this.textBoxLastName.TabIndex = 3;
             // 
             // buttonSave
@@ -123,7 +123,7 @@
             // 
             this.textBoxEmail.Location = new System.Drawing.Point(208, 134);
             this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(130, 20);
+            this.textBoxEmail.Size = new System.Drawing.Size(130, 22);
             this.textBoxEmail.TabIndex = 7;
             this.textBoxEmail.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -131,7 +131,7 @@
             // 
             this.textBoxPhone.Location = new System.Drawing.Point(208, 186);
             this.textBoxPhone.Name = "textBoxPhone";
-            this.textBoxPhone.Size = new System.Drawing.Size(130, 20);
+            this.textBoxPhone.Size = new System.Drawing.Size(130, 22);
             this.textBoxPhone.TabIndex = 8;
             // 
             // buttonBack
@@ -162,7 +162,7 @@
             // 
             this.textBoxBillingAddress.Location = new System.Drawing.Point(208, 233);
             this.textBoxBillingAddress.Name = "textBoxBillingAddress";
-            this.textBoxBillingAddress.Size = new System.Drawing.Size(130, 20);
+            this.textBoxBillingAddress.Size = new System.Drawing.Size(130, 22);
             this.textBoxBillingAddress.TabIndex = 11;
             // 
             // labelCity
@@ -179,7 +179,7 @@
             // 
             this.textBoxCity.Location = new System.Drawing.Point(208, 280);
             this.textBoxCity.Name = "textBoxCity";
-            this.textBoxCity.Size = new System.Drawing.Size(130, 20);
+            this.textBoxCity.Size = new System.Drawing.Size(130, 22);
             this.textBoxCity.TabIndex = 13;
             // 
             // labelState
@@ -206,7 +206,7 @@
             // 
             this.textBoxPostalCode.Location = new System.Drawing.Point(208, 377);
             this.textBoxPostalCode.Name = "textBoxPostalCode";
-            this.textBoxPostalCode.Size = new System.Drawing.Size(130, 20);
+            this.textBoxPostalCode.Size = new System.Drawing.Size(130, 22);
             this.textBoxPostalCode.TabIndex = 17;
             // 
             // comboBoxState
@@ -214,7 +214,7 @@
             this.comboBoxState.FormattingEnabled = true;
             this.comboBoxState.Location = new System.Drawing.Point(208, 326);
             this.comboBoxState.Name = "comboBoxState";
-            this.comboBoxState.Size = new System.Drawing.Size(130, 21);
+            this.comboBoxState.Size = new System.Drawing.Size(130, 24);
             this.comboBoxState.TabIndex = 18;
             // 
             // groupBox1
@@ -235,6 +235,7 @@
             this.groupBox1.Controls.Add(this.textBoxBillingAddress);
             this.groupBox1.Controls.Add(this.textBoxPhone);
             this.groupBox1.Controls.Add(this.labelBillingAddress);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(187, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(405, 414);
@@ -257,14 +258,14 @@
             // 
             // buttonFill
             // 
-            this.buttonFill.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.buttonFill.BackColor = System.Drawing.Color.DodgerBlue;
             this.buttonFill.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonFill.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonFill.Location = new System.Drawing.Point(607, 25);
+            this.buttonFill.Location = new System.Drawing.Point(607, 24);
             this.buttonFill.Name = "buttonFill";
             this.buttonFill.Size = new System.Drawing.Size(181, 38);
             this.buttonFill.TabIndex = 21;
-            this.buttonFill.Text = "SEARCH";
+            this.buttonFill.Text = "Search";
             this.buttonFill.UseVisualStyleBackColor = false;
             this.buttonFill.Click += new System.EventHandler(this.buttonFill_Click);
             // 
@@ -272,7 +273,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(818, 450);
             this.Controls.Add(this.buttonFill);
             this.Controls.Add(this.buttonUpdate);

@@ -23,17 +23,7 @@ namespace SokProodos
             comboBoxSuppliers.SelectedIndexChanged += comboBoxSuppliers_SelectedIndexChanged;
         }
 
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            using (LinearGradientBrush brush = new LinearGradientBrush(
-                this.ClientRectangle,
-                Color.FromArgb(45, 50, 60),  // Dark Grey
-                Color.FromArgb(150, 155, 165), // Lighter Grey
-                LinearGradientMode.Vertical))
-            {
-                e.Graphics.FillRectangle(brush, this.ClientRectangle);
-            }
-        }
+        
 
         private void LoadSuppliers()
         {
@@ -119,7 +109,7 @@ namespace SokProodos
             {
                 int supplierId = ((KeyValuePair<int, string>)comboBoxSuppliers.SelectedItem).Key;
 
-                // Debugging: Ensure correct ID is selected
+                
                 MessageBox.Show($"Selected Supplier ID: {supplierId}", "Debug", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 LoadSupplierInfo(supplierId);

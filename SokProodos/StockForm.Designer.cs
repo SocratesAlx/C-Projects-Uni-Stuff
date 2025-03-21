@@ -55,6 +55,10 @@
             this.textBoxDaysToManufacture = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.labelFinishedGoodsFlag = new System.Windows.Forms.Label();
+            this.textBoxFinishedGoodsFlag = new System.Windows.Forms.TextBox();
+            this.labelMakeFlag = new System.Windows.Forms.Label();
+            this.textBoxMakeFlag = new System.Windows.Forms.TextBox();
             this.labelProductID = new System.Windows.Forms.Label();
             this.textBoxProductID = new System.Windows.Forms.TextBox();
             this.comboBoxSpecialOffer = new System.Windows.Forms.ComboBox();
@@ -63,10 +67,6 @@
             this.labelStockQuantity = new System.Windows.Forms.Label();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.buttonFill = new System.Windows.Forms.Button();
-            this.textBoxMakeFlag = new System.Windows.Forms.TextBox();
-            this.labelMakeFlag = new System.Windows.Forms.Label();
-            this.textBoxFinishedGoodsFlag = new System.Windows.Forms.TextBox();
-            this.labelFinishedGoodsFlag = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,7 +84,7 @@
             // 
             this.textBoxProductName.Location = new System.Drawing.Point(152, 35);
             this.textBoxProductName.Name = "textBoxProductName";
-            this.textBoxProductName.Size = new System.Drawing.Size(132, 20);
+            this.textBoxProductName.Size = new System.Drawing.Size(132, 22);
             this.textBoxProductName.TabIndex = 1;
             // 
             // labelProductNumber
@@ -101,7 +101,7 @@
             // 
             this.textBoxProductNumber.Location = new System.Drawing.Point(152, 307);
             this.textBoxProductNumber.Name = "textBoxProductNumber";
-            this.textBoxProductNumber.Size = new System.Drawing.Size(132, 20);
+            this.textBoxProductNumber.Size = new System.Drawing.Size(132, 22);
             this.textBoxProductNumber.TabIndex = 3;
             // 
             // labelColor
@@ -118,7 +118,7 @@
             // 
             this.textBoxColor.Location = new System.Drawing.Point(152, 120);
             this.textBoxColor.Name = "textBoxColor";
-            this.textBoxColor.Size = new System.Drawing.Size(132, 20);
+            this.textBoxColor.Size = new System.Drawing.Size(132, 22);
             this.textBoxColor.TabIndex = 5;
             // 
             // labelStandardCost
@@ -135,7 +135,7 @@
             // 
             this.textBoxStandardCost.Location = new System.Drawing.Point(152, 157);
             this.textBoxStandardCost.Name = "textBoxStandardCost";
-            this.textBoxStandardCost.Size = new System.Drawing.Size(132, 20);
+            this.textBoxStandardCost.Size = new System.Drawing.Size(132, 22);
             this.textBoxStandardCost.TabIndex = 7;
             // 
             // labelListPrice
@@ -152,7 +152,7 @@
             // 
             this.textBoxListPrice.Location = new System.Drawing.Point(152, 196);
             this.textBoxListPrice.Name = "textBoxListPrice";
-            this.textBoxListPrice.Size = new System.Drawing.Size(132, 20);
+            this.textBoxListPrice.Size = new System.Drawing.Size(132, 22);
             this.textBoxListPrice.TabIndex = 9;
             // 
             // labelSize
@@ -169,7 +169,7 @@
             // 
             this.textBoxSize.Location = new System.Drawing.Point(152, 234);
             this.textBoxSize.Name = "textBoxSize";
-            this.textBoxSize.Size = new System.Drawing.Size(132, 20);
+            this.textBoxSize.Size = new System.Drawing.Size(132, 22);
             this.textBoxSize.TabIndex = 11;
             // 
             // labelWeight
@@ -186,7 +186,7 @@
             // 
             this.textBoxWeight.Location = new System.Drawing.Point(451, 35);
             this.textBoxWeight.Name = "textBoxWeight";
-            this.textBoxWeight.Size = new System.Drawing.Size(125, 20);
+            this.textBoxWeight.Size = new System.Drawing.Size(125, 22);
             this.textBoxWeight.TabIndex = 13;
             // 
             // labelCategory
@@ -204,7 +204,7 @@
             this.comboBoxCategory.FormattingEnabled = true;
             this.comboBoxCategory.Location = new System.Drawing.Point(451, 74);
             this.comboBoxCategory.Name = "comboBoxCategory";
-            this.comboBoxCategory.Size = new System.Drawing.Size(125, 21);
+            this.comboBoxCategory.Size = new System.Drawing.Size(125, 24);
             this.comboBoxCategory.TabIndex = 15;
             // 
             // labelModel
@@ -222,7 +222,7 @@
             this.comboBoxModel.FormattingEnabled = true;
             this.comboBoxModel.Location = new System.Drawing.Point(451, 112);
             this.comboBoxModel.Name = "comboBoxModel";
-            this.comboBoxModel.Size = new System.Drawing.Size(125, 21);
+            this.comboBoxModel.Size = new System.Drawing.Size(125, 24);
             this.comboBoxModel.TabIndex = 17;
             // 
             // buttonSaveProduct
@@ -252,7 +252,7 @@
             // 
             this.textBoxSafetyStock.Location = new System.Drawing.Point(451, 150);
             this.textBoxSafetyStock.Name = "textBoxSafetyStock";
-            this.textBoxSafetyStock.Size = new System.Drawing.Size(125, 20);
+            this.textBoxSafetyStock.Size = new System.Drawing.Size(125, 22);
             this.textBoxSafetyStock.TabIndex = 20;
             // 
             // labelReorderPoint
@@ -269,7 +269,7 @@
             // 
             this.textBoxReorderPoint.Location = new System.Drawing.Point(451, 192);
             this.textBoxReorderPoint.Name = "textBoxReorderPoint";
-            this.textBoxReorderPoint.Size = new System.Drawing.Size(125, 20);
+            this.textBoxReorderPoint.Size = new System.Drawing.Size(125, 22);
             this.textBoxReorderPoint.TabIndex = 22;
             // 
             // labelDaysToManufacture
@@ -286,7 +286,7 @@
             // 
             this.textBoxDaysToManufacture.Location = new System.Drawing.Point(451, 234);
             this.textBoxDaysToManufacture.Name = "textBoxDaysToManufacture";
-            this.textBoxDaysToManufacture.Size = new System.Drawing.Size(125, 20);
+            this.textBoxDaysToManufacture.Size = new System.Drawing.Size(125, 22);
             this.textBoxDaysToManufacture.TabIndex = 24;
             // 
             // button1
@@ -338,12 +338,49 @@
             this.groupBox1.Controls.Add(this.labelCategory);
             this.groupBox1.Controls.Add(this.textBoxSize);
             this.groupBox1.Controls.Add(this.labelWeight);
-            this.groupBox1.Location = new System.Drawing.Point(124, 12);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(110, 11);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(629, 377);
             this.groupBox1.TabIndex = 26;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Product Details";
+            // 
+            // labelFinishedGoodsFlag
+            // 
+            this.labelFinishedGoodsFlag.AutoSize = true;
+            this.labelFinishedGoodsFlag.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFinishedGoodsFlag.Location = new System.Drawing.Point(309, 346);
+            this.labelFinishedGoodsFlag.Name = "labelFinishedGoodsFlag";
+            this.labelFinishedGoodsFlag.Size = new System.Drawing.Size(74, 16);
+            this.labelFinishedGoodsFlag.TabIndex = 34;
+            this.labelFinishedGoodsFlag.Text = "For Sale?";
+            // 
+            // textBoxFinishedGoodsFlag
+            // 
+            this.textBoxFinishedGoodsFlag.Location = new System.Drawing.Point(451, 346);
+            this.textBoxFinishedGoodsFlag.Name = "textBoxFinishedGoodsFlag";
+            this.textBoxFinishedGoodsFlag.Size = new System.Drawing.Size(125, 22);
+            this.textBoxFinishedGoodsFlag.TabIndex = 33;
+            this.textBoxFinishedGoodsFlag.TextChanged += new System.EventHandler(this.textBoxFinishedGoodsFlag_TextChanged);
+            // 
+            // labelMakeFlag
+            // 
+            this.labelMakeFlag.AutoSize = true;
+            this.labelMakeFlag.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMakeFlag.Location = new System.Drawing.Point(309, 311);
+            this.labelMakeFlag.Name = "labelMakeFlag";
+            this.labelMakeFlag.Size = new System.Drawing.Size(107, 16);
+            this.labelMakeFlag.TabIndex = 32;
+            this.labelMakeFlag.Text = "For Purchase?";
+            // 
+            // textBoxMakeFlag
+            // 
+            this.textBoxMakeFlag.Location = new System.Drawing.Point(451, 310);
+            this.textBoxMakeFlag.Name = "textBoxMakeFlag";
+            this.textBoxMakeFlag.Size = new System.Drawing.Size(125, 22);
+            this.textBoxMakeFlag.TabIndex = 31;
+            this.textBoxMakeFlag.TextChanged += new System.EventHandler(this.textBoxMakeFlag_TextChanged);
             // 
             // labelProductID
             // 
@@ -359,7 +396,7 @@
             // 
             this.textBoxProductID.Location = new System.Drawing.Point(152, 71);
             this.textBoxProductID.Name = "textBoxProductID";
-            this.textBoxProductID.Size = new System.Drawing.Size(132, 20);
+            this.textBoxProductID.Size = new System.Drawing.Size(132, 22);
             this.textBoxProductID.TabIndex = 29;
             this.textBoxProductID.TextChanged += new System.EventHandler(this.textBoxProductID_TextChanged);
             // 
@@ -368,7 +405,7 @@
             this.comboBoxSpecialOffer.FormattingEnabled = true;
             this.comboBoxSpecialOffer.Location = new System.Drawing.Point(152, 272);
             this.comboBoxSpecialOffer.Name = "comboBoxSpecialOffer";
-            this.comboBoxSpecialOffer.Size = new System.Drawing.Size(132, 21);
+            this.comboBoxSpecialOffer.Size = new System.Drawing.Size(132, 24);
             this.comboBoxSpecialOffer.TabIndex = 28;
             // 
             // label1
@@ -385,7 +422,7 @@
             // 
             this.textBoxStockQuantity.Location = new System.Drawing.Point(451, 272);
             this.textBoxStockQuantity.Name = "textBoxStockQuantity";
-            this.textBoxStockQuantity.Size = new System.Drawing.Size(125, 20);
+            this.textBoxStockQuantity.Size = new System.Drawing.Size(125, 22);
             this.textBoxStockQuantity.TabIndex = 26;
             // 
             // labelStockQuantity
@@ -424,47 +461,11 @@
             this.buttonFill.UseVisualStyleBackColor = false;
             this.buttonFill.Click += new System.EventHandler(this.buttonFill_Click);
             // 
-            // textBoxMakeFlag
-            // 
-            this.textBoxMakeFlag.Location = new System.Drawing.Point(451, 310);
-            this.textBoxMakeFlag.Name = "textBoxMakeFlag";
-            this.textBoxMakeFlag.Size = new System.Drawing.Size(125, 20);
-            this.textBoxMakeFlag.TabIndex = 31;
-            this.textBoxMakeFlag.TextChanged += new System.EventHandler(this.textBoxMakeFlag_TextChanged);
-            // 
-            // labelMakeFlag
-            // 
-            this.labelMakeFlag.AutoSize = true;
-            this.labelMakeFlag.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMakeFlag.Location = new System.Drawing.Point(309, 311);
-            this.labelMakeFlag.Name = "labelMakeFlag";
-            this.labelMakeFlag.Size = new System.Drawing.Size(107, 16);
-            this.labelMakeFlag.TabIndex = 32;
-            this.labelMakeFlag.Text = "For Purchase?";
-            // 
-            // textBoxFinishedGoodsFlag
-            // 
-            this.textBoxFinishedGoodsFlag.Location = new System.Drawing.Point(451, 346);
-            this.textBoxFinishedGoodsFlag.Name = "textBoxFinishedGoodsFlag";
-            this.textBoxFinishedGoodsFlag.Size = new System.Drawing.Size(125, 20);
-            this.textBoxFinishedGoodsFlag.TabIndex = 33;
-            this.textBoxFinishedGoodsFlag.TextChanged += new System.EventHandler(this.textBoxFinishedGoodsFlag_TextChanged);
-            // 
-            // labelFinishedGoodsFlag
-            // 
-            this.labelFinishedGoodsFlag.AutoSize = true;
-            this.labelFinishedGoodsFlag.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFinishedGoodsFlag.Location = new System.Drawing.Point(309, 346);
-            this.labelFinishedGoodsFlag.Name = "labelFinishedGoodsFlag";
-            this.labelFinishedGoodsFlag.Size = new System.Drawing.Size(74, 16);
-            this.labelFinishedGoodsFlag.TabIndex = 34;
-            this.labelFinishedGoodsFlag.Text = "For Sale?";
-            // 
             // StockForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(838, 450);
             this.Controls.Add(this.buttonFill);
             this.Controls.Add(this.buttonUpdate);

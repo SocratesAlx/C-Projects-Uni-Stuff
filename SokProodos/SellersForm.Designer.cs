@@ -45,12 +45,12 @@
             this.buttonSaveSeller = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBoxTerritoryID = new System.Windows.Forms.ComboBox();
+            this.labelSellerID = new System.Windows.Forms.Label();
+            this.textBoxSellerID = new System.Windows.Forms.TextBox();
             this.labelTerritoryID = new System.Windows.Forms.Label();
+            this.comboBoxTerritoryID = new System.Windows.Forms.ComboBox();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.buttonFill = new System.Windows.Forms.Button();
-            this.textBoxSellerID = new System.Windows.Forms.TextBox();
-            this.labelSellerID = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,7 +68,7 @@
             // 
             this.textBoxSellerName.Location = new System.Drawing.Point(143, 19);
             this.textBoxSellerName.Name = "textBoxSellerName";
-            this.textBoxSellerName.Size = new System.Drawing.Size(144, 20);
+            this.textBoxSellerName.Size = new System.Drawing.Size(144, 22);
             this.textBoxSellerName.TabIndex = 1;
             // 
             // labelSalesQuota
@@ -85,7 +85,7 @@
             // 
             this.textBoxSalesQuota.Location = new System.Drawing.Point(143, 54);
             this.textBoxSalesQuota.Name = "textBoxSalesQuota";
-            this.textBoxSalesQuota.Size = new System.Drawing.Size(144, 20);
+            this.textBoxSalesQuota.Size = new System.Drawing.Size(144, 22);
             this.textBoxSalesQuota.TabIndex = 3;
             // 
             // labelBonus
@@ -102,7 +102,7 @@
             // 
             this.textBoxBonus.Location = new System.Drawing.Point(143, 89);
             this.textBoxBonus.Name = "textBoxBonus";
-            this.textBoxBonus.Size = new System.Drawing.Size(144, 20);
+            this.textBoxBonus.Size = new System.Drawing.Size(144, 22);
             this.textBoxBonus.TabIndex = 5;
             // 
             // labelCommissionPct
@@ -119,7 +119,7 @@
             // 
             this.textBoxCommissionPct.Location = new System.Drawing.Point(143, 129);
             this.textBoxCommissionPct.Name = "textBoxCommissionPct";
-            this.textBoxCommissionPct.Size = new System.Drawing.Size(144, 20);
+            this.textBoxCommissionPct.Size = new System.Drawing.Size(144, 22);
             this.textBoxCommissionPct.TabIndex = 7;
             // 
             // labelSalesYTD
@@ -136,7 +136,7 @@
             // 
             this.textBoxSalesYTD.Location = new System.Drawing.Point(142, 170);
             this.textBoxSalesYTD.Name = "textBoxSalesYTD";
-            this.textBoxSalesYTD.Size = new System.Drawing.Size(144, 20);
+            this.textBoxSalesYTD.Size = new System.Drawing.Size(144, 22);
             this.textBoxSalesYTD.TabIndex = 9;
             // 
             // labelSalesLastYear
@@ -153,7 +153,7 @@
             // 
             this.textBoxSalesLastYear.Location = new System.Drawing.Point(143, 207);
             this.textBoxSalesLastYear.Name = "textBoxSalesLastYear";
-            this.textBoxSalesLastYear.Size = new System.Drawing.Size(144, 20);
+            this.textBoxSalesLastYear.Size = new System.Drawing.Size(144, 22);
             this.textBoxSalesLastYear.TabIndex = 11;
             // 
             // labelTerritory
@@ -171,7 +171,7 @@
             this.comboBoxTerritory.FormattingEnabled = true;
             this.comboBoxTerritory.Location = new System.Drawing.Point(143, 243);
             this.comboBoxTerritory.Name = "comboBoxTerritory";
-            this.comboBoxTerritory.Size = new System.Drawing.Size(144, 21);
+            this.comboBoxTerritory.Size = new System.Drawing.Size(144, 24);
             this.comboBoxTerritory.TabIndex = 13;
             this.comboBoxTerritory.SelectedIndexChanged += new System.EventHandler(this.comboBoxTerritory_SelectedIndexChanged);
             // 
@@ -179,10 +179,10 @@
             // 
             this.buttonSaveSeller.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.buttonSaveSeller.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSaveSeller.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSaveSeller.Location = new System.Drawing.Point(715, 398);
+            this.buttonSaveSeller.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSaveSeller.Location = new System.Drawing.Point(680, 398);
             this.buttonSaveSeller.Name = "buttonSaveSeller";
-            this.buttonSaveSeller.Size = new System.Drawing.Size(105, 41);
+            this.buttonSaveSeller.Size = new System.Drawing.Size(169, 41);
             this.buttonSaveSeller.TabIndex = 14;
             this.buttonSaveSeller.Text = "Save Seller";
             this.buttonSaveSeller.UseVisualStyleBackColor = false;
@@ -221,65 +221,13 @@
             this.groupBox1.Controls.Add(this.textBoxSalesYTD);
             this.groupBox1.Controls.Add(this.textBoxCommissionPct);
             this.groupBox1.Controls.Add(this.labelSalesYTD);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(247, 28);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(356, 367);
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Seller Details";
-            // 
-            // comboBoxTerritoryID
-            // 
-            this.comboBoxTerritoryID.FormattingEnabled = true;
-            this.comboBoxTerritoryID.Location = new System.Drawing.Point(142, 282);
-            this.comboBoxTerritoryID.Name = "comboBoxTerritoryID";
-            this.comboBoxTerritoryID.Size = new System.Drawing.Size(144, 21);
-            this.comboBoxTerritoryID.TabIndex = 14;
-            this.comboBoxTerritoryID.SelectedIndexChanged += new System.EventHandler(this.comboBoxTerritoryID_SelectedIndexChanged);
-            // 
-            // labelTerritoryID
-            // 
-            this.labelTerritoryID.AutoSize = true;
-            this.labelTerritoryID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTerritoryID.Location = new System.Drawing.Point(32, 282);
-            this.labelTerritoryID.Name = "labelTerritoryID";
-            this.labelTerritoryID.Size = new System.Drawing.Size(85, 16);
-            this.labelTerritoryID.TabIndex = 15;
-            this.labelTerritoryID.Text = "Territory ID";
-            // 
-            // buttonUpdate
-            // 
-            this.buttonUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.buttonUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonUpdate.Location = new System.Drawing.Point(715, 342);
-            this.buttonUpdate.Name = "buttonUpdate";
-            this.buttonUpdate.Size = new System.Drawing.Size(105, 36);
-            this.buttonUpdate.TabIndex = 17;
-            this.buttonUpdate.Text = "Update Seller";
-            this.buttonUpdate.UseVisualStyleBackColor = false;
-            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
-            // 
-            // buttonFill
-            // 
-            this.buttonFill.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.buttonFill.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFill.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonFill.Location = new System.Drawing.Point(715, 47);
-            this.buttonFill.Name = "buttonFill";
-            this.buttonFill.Size = new System.Drawing.Size(105, 33);
-            this.buttonFill.TabIndex = 18;
-            this.buttonFill.Text = "Search";
-            this.buttonFill.UseVisualStyleBackColor = false;
-            this.buttonFill.Click += new System.EventHandler(this.buttonFill_Click);
-            // 
-            // textBoxSellerID
-            // 
-            this.textBoxSellerID.Location = new System.Drawing.Point(142, 324);
-            this.textBoxSellerID.Name = "textBoxSellerID";
-            this.textBoxSellerID.Size = new System.Drawing.Size(144, 20);
-            this.textBoxSellerID.TabIndex = 16;
-            this.textBoxSellerID.TextChanged += new System.EventHandler(this.textBoxSellerID_TextChanged);
             // 
             // labelSellerID
             // 
@@ -291,11 +239,64 @@
             this.labelSellerID.TabIndex = 17;
             this.labelSellerID.Text = "Seller ID";
             // 
+            // textBoxSellerID
+            // 
+            this.textBoxSellerID.Location = new System.Drawing.Point(142, 324);
+            this.textBoxSellerID.Name = "textBoxSellerID";
+            this.textBoxSellerID.Size = new System.Drawing.Size(144, 22);
+            this.textBoxSellerID.TabIndex = 16;
+            this.textBoxSellerID.TextChanged += new System.EventHandler(this.textBoxSellerID_TextChanged);
+            // 
+            // labelTerritoryID
+            // 
+            this.labelTerritoryID.AutoSize = true;
+            this.labelTerritoryID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTerritoryID.Location = new System.Drawing.Point(32, 282);
+            this.labelTerritoryID.Name = "labelTerritoryID";
+            this.labelTerritoryID.Size = new System.Drawing.Size(85, 16);
+            this.labelTerritoryID.TabIndex = 15;
+            this.labelTerritoryID.Text = "Territory ID";
+            // 
+            // comboBoxTerritoryID
+            // 
+            this.comboBoxTerritoryID.FormattingEnabled = true;
+            this.comboBoxTerritoryID.Location = new System.Drawing.Point(142, 282);
+            this.comboBoxTerritoryID.Name = "comboBoxTerritoryID";
+            this.comboBoxTerritoryID.Size = new System.Drawing.Size(144, 24);
+            this.comboBoxTerritoryID.TabIndex = 14;
+            this.comboBoxTerritoryID.SelectedIndexChanged += new System.EventHandler(this.comboBoxTerritoryID_SelectedIndexChanged);
+            // 
+            // buttonUpdate
+            // 
+            this.buttonUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.buttonUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonUpdate.Location = new System.Drawing.Point(680, 342);
+            this.buttonUpdate.Name = "buttonUpdate";
+            this.buttonUpdate.Size = new System.Drawing.Size(169, 36);
+            this.buttonUpdate.TabIndex = 17;
+            this.buttonUpdate.Text = "Update Seller";
+            this.buttonUpdate.UseVisualStyleBackColor = false;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
+            // 
+            // buttonFill
+            // 
+            this.buttonFill.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.buttonFill.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonFill.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonFill.Location = new System.Drawing.Point(680, 47);
+            this.buttonFill.Name = "buttonFill";
+            this.buttonFill.Size = new System.Drawing.Size(169, 33);
+            this.buttonFill.TabIndex = 18;
+            this.buttonFill.Text = "Search";
+            this.buttonFill.UseVisualStyleBackColor = false;
+            this.buttonFill.Click += new System.EventHandler(this.buttonFill_Click);
+            // 
             // SellersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(861, 450);
             this.Controls.Add(this.buttonFill);
             this.Controls.Add(this.buttonUpdate);

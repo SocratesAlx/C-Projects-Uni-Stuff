@@ -33,23 +33,25 @@
             this.comboBoxSuppliers = new System.Windows.Forms.ComboBox();
             this.labelSuppliers = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSupplierInfo)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewSupplierInfo
             // 
             this.dataGridViewSupplierInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewSupplierInfo.Location = new System.Drawing.Point(358, 33);
+            this.dataGridViewSupplierInfo.Location = new System.Drawing.Point(349, 33);
             this.dataGridViewSupplierInfo.Name = "dataGridViewSupplierInfo";
-            this.dataGridViewSupplierInfo.Size = new System.Drawing.Size(626, 358);
+            this.dataGridViewSupplierInfo.Size = new System.Drawing.Size(626, 331);
             this.dataGridViewSupplierInfo.TabIndex = 0;
             // 
             // buttonBack
             // 
             this.buttonBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.buttonBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonBack.Location = new System.Drawing.Point(33, 522);
+            this.buttonBack.Location = new System.Drawing.Point(12, 462);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(114, 40);
             this.buttonBack.TabIndex = 1;
@@ -77,7 +79,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.groupBox1.Controls.Add(this.comboBoxSuppliers);
             this.groupBox1.Controls.Add(this.labelSuppliers);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -87,11 +89,22 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::SokProodos.Properties.Resources.awc_logo;
+            this.pictureBox1.Location = new System.Drawing.Point(413, 402);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(516, 100);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
             // SupplierInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(987, 588);
+            this.ClientSize = new System.Drawing.Size(987, 514);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.dataGridViewSupplierInfo);
@@ -100,7 +113,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSupplierInfo)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -111,5 +126,6 @@
         private System.Windows.Forms.ComboBox comboBoxSuppliers;
         private System.Windows.Forms.Label labelSuppliers;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

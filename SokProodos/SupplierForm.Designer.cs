@@ -70,7 +70,7 @@
             // 
             this.textBoxSupplierName.Location = new System.Drawing.Point(183, 41);
             this.textBoxSupplierName.Name = "textBoxSupplierName";
-            this.textBoxSupplierName.Size = new System.Drawing.Size(127, 20);
+            this.textBoxSupplierName.Size = new System.Drawing.Size(127, 22);
             this.textBoxSupplierName.TabIndex = 2;
             // 
             // comboBoxCreditRating
@@ -78,7 +78,7 @@
             this.comboBoxCreditRating.FormattingEnabled = true;
             this.comboBoxCreditRating.Location = new System.Drawing.Point(183, 94);
             this.comboBoxCreditRating.Name = "comboBoxCreditRating";
-            this.comboBoxCreditRating.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxCreditRating.Size = new System.Drawing.Size(121, 24);
             this.comboBoxCreditRating.TabIndex = 3;
             // 
             // labelPreferred
@@ -133,7 +133,7 @@
             // 
             this.textBoxWebsite.Location = new System.Drawing.Point(183, 270);
             this.textBoxWebsite.Name = "textBoxWebsite";
-            this.textBoxWebsite.Size = new System.Drawing.Size(121, 20);
+            this.textBoxWebsite.Size = new System.Drawing.Size(121, 22);
             this.textBoxWebsite.TabIndex = 9;
             // 
             // buttonSaveSupplier
@@ -152,6 +152,7 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(26, 399);
             this.button1.Name = "button1";
@@ -173,6 +174,7 @@
             this.groupBox1.Controls.Add(this.checkBoxActive);
             this.groupBox1.Controls.Add(this.checkBoxPreferred);
             this.groupBox1.Controls.Add(this.labelActive);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(204, 34);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(376, 340);
@@ -198,9 +200,9 @@
             this.buttonFill.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.buttonFill.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonFill.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonFill.Location = new System.Drawing.Point(644, 56);
+            this.buttonFill.Location = new System.Drawing.Point(644, 34);
             this.buttonFill.Name = "buttonFill";
-            this.buttonFill.Size = new System.Drawing.Size(144, 30);
+            this.buttonFill.Size = new System.Drawing.Size(144, 32);
             this.buttonFill.TabIndex = 14;
             this.buttonFill.Text = "SEARCH";
             this.buttonFill.UseVisualStyleBackColor = false;
@@ -210,7 +212,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(820, 450);
             this.Controls.Add(this.buttonFill);
             this.Controls.Add(this.buttonUpdate);

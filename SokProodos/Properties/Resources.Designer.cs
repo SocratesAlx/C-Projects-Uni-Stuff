@@ -63,9 +63,39 @@ namespace SokProodos.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap awc_logo {
+            get {
+                object obj = ResourceManager.GetObject("awc_logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Custom_Icon_Design_Flatastic_1_Information_512 {
+            get {
+                object obj = ResourceManager.GetObject("Custom-Icon-Design-Flatastic-1-Information.512", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Justicon_Free_Simple_Line_Plan_Planning_Management_Chart_Business_512 {
             get {
                 object obj = ResourceManager.GetObject("Justicon-Free-Simple-Line-Plan-Planning-Management-Chart-Business.512", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Justicon_Free_Simple_Line_Upload_Server_Arrow_Data_Network_Database_512 {
+            get {
+                object obj = ResourceManager.GetObject("Justicon-Free-Simple-Line-Upload-Server-Arrow-Data-Network-Database.512", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

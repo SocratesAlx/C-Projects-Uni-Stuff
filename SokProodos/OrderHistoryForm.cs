@@ -97,19 +97,7 @@ namespace SokProodos
             }
         }
 
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            using (LinearGradientBrush brush = new LinearGradientBrush(
-                this.ClientRectangle,
-                Color.FromArgb(45, 50, 60),   // **Dark Grey at the Top**
-                Color.FromArgb(150, 155, 165), // **Lighter Grey at the Bottom**
-                LinearGradientMode.Vertical)) // **Vertical transition**
-            {
-                e.Graphics.FillRectangle(brush, this.ClientRectangle);
-            }
-        }
-
- 
+       
         private void Button_MouseEnter(object sender, EventArgs e)
         {
             ((Button)sender).BackColor = Color.FromArgb(114, 137, 218); // Lighter blue on hover

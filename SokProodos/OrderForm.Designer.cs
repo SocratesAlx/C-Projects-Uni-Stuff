@@ -56,8 +56,10 @@
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.buttonFindBillingAddress = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewInvoiceItems)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBoxCustomer
@@ -65,14 +67,14 @@
             this.comboBoxCustomer.FormattingEnabled = true;
             this.comboBoxCustomer.Location = new System.Drawing.Point(126, 19);
             this.comboBoxCustomer.Name = "comboBoxCustomer";
-            this.comboBoxCustomer.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxCustomer.Size = new System.Drawing.Size(121, 23);
             this.comboBoxCustomer.TabIndex = 0;
             // 
             // labelCustomer
             // 
             this.labelCustomer.AutoSize = true;
             this.labelCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCustomer.Location = new System.Drawing.Point(24, 20);
+            this.labelCustomer.Location = new System.Drawing.Point(12, 22);
             this.labelCustomer.Name = "labelCustomer";
             this.labelCustomer.Size = new System.Drawing.Size(72, 16);
             this.labelCustomer.TabIndex = 1;
@@ -82,7 +84,7 @@
             // 
             this.labelBillingAddress.AutoSize = true;
             this.labelBillingAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBillingAddress.Location = new System.Drawing.Point(8, 59);
+            this.labelBillingAddress.Location = new System.Drawing.Point(12, 58);
             this.labelBillingAddress.Name = "labelBillingAddress";
             this.labelBillingAddress.Size = new System.Drawing.Size(112, 16);
             this.labelBillingAddress.TabIndex = 2;
@@ -92,14 +94,14 @@
             // 
             this.textBoxBillingAddress.Location = new System.Drawing.Point(126, 58);
             this.textBoxBillingAddress.Name = "textBoxBillingAddress";
-            this.textBoxBillingAddress.Size = new System.Drawing.Size(121, 20);
+            this.textBoxBillingAddress.Size = new System.Drawing.Size(121, 21);
             this.textBoxBillingAddress.TabIndex = 3;
             // 
             // labelOrderDate
             // 
             this.labelOrderDate.AutoSize = true;
             this.labelOrderDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelOrderDate.Location = new System.Drawing.Point(23, 99);
+            this.labelOrderDate.Location = new System.Drawing.Point(15, 96);
             this.labelOrderDate.Name = "labelOrderDate";
             this.labelOrderDate.Size = new System.Drawing.Size(83, 16);
             this.labelOrderDate.TabIndex = 4;
@@ -109,14 +111,14 @@
             // 
             this.textBoxOrderDate.Location = new System.Drawing.Point(126, 96);
             this.textBoxOrderDate.Name = "textBoxOrderDate";
-            this.textBoxOrderDate.Size = new System.Drawing.Size(121, 20);
+            this.textBoxOrderDate.Size = new System.Drawing.Size(121, 21);
             this.textBoxOrderDate.TabIndex = 5;
             // 
             // labelDueDate
             // 
             this.labelDueDate.AutoSize = true;
             this.labelDueDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDueDate.Location = new System.Drawing.Point(23, 133);
+            this.labelDueDate.Location = new System.Drawing.Point(15, 133);
             this.labelDueDate.Name = "labelDueDate";
             this.labelDueDate.Size = new System.Drawing.Size(72, 16);
             this.labelDueDate.TabIndex = 6;
@@ -126,14 +128,14 @@
             // 
             this.textBoxDueDate.Location = new System.Drawing.Point(126, 133);
             this.textBoxDueDate.Name = "textBoxDueDate";
-            this.textBoxDueDate.Size = new System.Drawing.Size(121, 20);
+            this.textBoxDueDate.Size = new System.Drawing.Size(121, 21);
             this.textBoxDueDate.TabIndex = 7;
             // 
             // labelSeller
             // 
             this.labelSeller.AutoSize = true;
             this.labelSeller.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSeller.Location = new System.Drawing.Point(35, 166);
+            this.labelSeller.Location = new System.Drawing.Point(15, 166);
             this.labelSeller.Name = "labelSeller";
             this.labelSeller.Size = new System.Drawing.Size(48, 16);
             this.labelSeller.TabIndex = 8;
@@ -144,14 +146,14 @@
             this.comboBoxSeller.FormattingEnabled = true;
             this.comboBoxSeller.Location = new System.Drawing.Point(126, 165);
             this.comboBoxSeller.Name = "comboBoxSeller";
-            this.comboBoxSeller.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxSeller.Size = new System.Drawing.Size(121, 23);
             this.comboBoxSeller.TabIndex = 9;
             // 
             // labelShipMethod
             // 
             this.labelShipMethod.AutoSize = true;
             this.labelShipMethod.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelShipMethod.Location = new System.Drawing.Point(20, 203);
+            this.labelShipMethod.Location = new System.Drawing.Point(15, 201);
             this.labelShipMethod.Name = "labelShipMethod";
             this.labelShipMethod.Size = new System.Drawing.Size(93, 16);
             this.labelShipMethod.TabIndex = 10;
@@ -162,14 +164,14 @@
             this.comboBoxShipMethod.FormattingEnabled = true;
             this.comboBoxShipMethod.Location = new System.Drawing.Point(126, 200);
             this.comboBoxShipMethod.Name = "comboBoxShipMethod";
-            this.comboBoxShipMethod.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxShipMethod.Size = new System.Drawing.Size(121, 23);
             this.comboBoxShipMethod.TabIndex = 11;
             // 
             // labelProduct
             // 
             this.labelProduct.AutoSize = true;
             this.labelProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelProduct.Location = new System.Drawing.Point(35, 234);
+            this.labelProduct.Location = new System.Drawing.Point(15, 234);
             this.labelProduct.Name = "labelProduct";
             this.labelProduct.Size = new System.Drawing.Size(60, 16);
             this.labelProduct.TabIndex = 12;
@@ -180,14 +182,14 @@
             this.comboBoxProduct.FormattingEnabled = true;
             this.comboBoxProduct.Location = new System.Drawing.Point(126, 234);
             this.comboBoxProduct.Name = "comboBoxProduct";
-            this.comboBoxProduct.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxProduct.Size = new System.Drawing.Size(121, 23);
             this.comboBoxProduct.TabIndex = 13;
             // 
             // labelQuantity
             // 
             this.labelQuantity.AutoSize = true;
             this.labelQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelQuantity.Location = new System.Drawing.Point(24, 276);
+            this.labelQuantity.Location = new System.Drawing.Point(17, 276);
             this.labelQuantity.Name = "labelQuantity";
             this.labelQuantity.Size = new System.Drawing.Size(63, 16);
             this.labelQuantity.TabIndex = 14;
@@ -197,22 +199,22 @@
             // 
             this.textBoxQuantity.Location = new System.Drawing.Point(126, 276);
             this.textBoxQuantity.Name = "textBoxQuantity";
-            this.textBoxQuantity.Size = new System.Drawing.Size(121, 20);
+            this.textBoxQuantity.Size = new System.Drawing.Size(121, 21);
             this.textBoxQuantity.TabIndex = 15;
             // 
             // dataGridViewInvoiceItems
             // 
             this.dataGridViewInvoiceItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewInvoiceItems.Location = new System.Drawing.Point(303, 37);
+            this.dataGridViewInvoiceItems.Location = new System.Drawing.Point(299, 12);
             this.dataGridViewInvoiceItems.Name = "dataGridViewInvoiceItems";
-            this.dataGridViewInvoiceItems.Size = new System.Drawing.Size(645, 390);
+            this.dataGridViewInvoiceItems.Size = new System.Drawing.Size(690, 401);
             this.dataGridViewInvoiceItems.TabIndex = 16;
             // 
             // labelSpecialOffer
             // 
             this.labelSpecialOffer.AutoSize = true;
             this.labelSpecialOffer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSpecialOffer.Location = new System.Drawing.Point(20, 316);
+            this.labelSpecialOffer.Location = new System.Drawing.Point(15, 316);
             this.labelSpecialOffer.Name = "labelSpecialOffer";
             this.labelSpecialOffer.Size = new System.Drawing.Size(97, 16);
             this.labelSpecialOffer.TabIndex = 17;
@@ -223,14 +225,14 @@
             this.comboBoxSpecialOffer.FormattingEnabled = true;
             this.comboBoxSpecialOffer.Location = new System.Drawing.Point(126, 315);
             this.comboBoxSpecialOffer.Name = "comboBoxSpecialOffer";
-            this.comboBoxSpecialOffer.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxSpecialOffer.Size = new System.Drawing.Size(121, 23);
             this.comboBoxSpecialOffer.TabIndex = 18;
             // 
             // labelTotalPrice
             // 
             this.labelTotalPrice.AutoSize = true;
             this.labelTotalPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTotalPrice.Location = new System.Drawing.Point(30, 362);
+            this.labelTotalPrice.Location = new System.Drawing.Point(17, 362);
             this.labelTotalPrice.Name = "labelTotalPrice";
             this.labelTotalPrice.Size = new System.Drawing.Size(83, 16);
             this.labelTotalPrice.TabIndex = 19;
@@ -238,9 +240,9 @@
             // 
             // textBoxTotalPrice
             // 
-            this.textBoxTotalPrice.Location = new System.Drawing.Point(126, 358);
+            this.textBoxTotalPrice.Location = new System.Drawing.Point(126, 357);
             this.textBoxTotalPrice.Name = "textBoxTotalPrice";
-            this.textBoxTotalPrice.Size = new System.Drawing.Size(126, 20);
+            this.textBoxTotalPrice.Size = new System.Drawing.Size(121, 21);
             this.textBoxTotalPrice.TabIndex = 20;
             // 
             // buttonAddToOrder
@@ -277,7 +279,7 @@
             this.buttonCancel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.buttonCancel.Location = new System.Drawing.Point(23, 502);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(93, 48);
+            this.buttonCancel.Size = new System.Drawing.Size(129, 48);
             this.buttonCancel.TabIndex = 23;
             this.buttonCancel.Text = "Back";
             this.buttonCancel.UseVisualStyleBackColor = false;
@@ -296,10 +298,10 @@
             // 
             // buttonFindBillingAddress
             // 
-            this.buttonFindBillingAddress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.buttonFindBillingAddress.BackColor = System.Drawing.Color.DodgerBlue;
             this.buttonFindBillingAddress.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonFindBillingAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonFindBillingAddress.Location = new System.Drawing.Point(19, 420);
+            this.buttonFindBillingAddress.Location = new System.Drawing.Point(12, 419);
             this.buttonFindBillingAddress.Name = "buttonFindBillingAddress";
             this.buttonFindBillingAddress.Size = new System.Drawing.Size(178, 40);
             this.buttonFindBillingAddress.TabIndex = 24;
@@ -309,7 +311,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.Teal;
+            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.groupBox1.Controls.Add(this.comboBoxCustomer);
             this.groupBox1.Controls.Add(this.labelCustomer);
             this.groupBox1.Controls.Add(this.labelBillingAddress);
@@ -330,6 +332,7 @@
             this.groupBox1.Controls.Add(this.comboBoxShipMethod);
             this.groupBox1.Controls.Add(this.comboBoxProduct);
             this.groupBox1.Controls.Add(this.labelProduct);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(253, 401);
@@ -337,12 +340,23 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Invoice Details";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::SokProodos.Properties.Resources.awc_logo;
+            this.pictureBox1.Location = new System.Drawing.Point(284, 450);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(516, 100);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 26;
+            this.pictureBox1.TabStop = false;
+            // 
             // OrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1016, 562);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonFindBillingAddress);
             this.Controls.Add(this.buttonCancel);
@@ -354,7 +368,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewInvoiceItems)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -387,5 +403,6 @@
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Windows.Forms.Button buttonFindBillingAddress;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
