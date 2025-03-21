@@ -18,8 +18,14 @@ namespace SokProodos
         {
             InitializeComponent();
             dbConnection = new ConnectToDB();
+            textBox2.UseSystemPasswordChar = true;
+            checkBoxShowPassword.CheckedChanged += checkBoxShowPassword_CheckedChanged;
+        }
 
-
+        private void checkBoxShowPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            // ✅ Toggle Password Visibility
+            textBox2.UseSystemPasswordChar = !checkBoxShowPassword.Checked;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -29,7 +35,10 @@ namespace SokProodos
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-
+            if (!checkBoxShowPassword.Checked)
+            {
+                textBox2.UseSystemPasswordChar = true;
+            }
         }
 
         private async void button1_Click(object sender, EventArgs e)
@@ -71,6 +80,11 @@ namespace SokProodos
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void checkBoxShowPassword_CheckedChanged_1(object sender, EventArgs e)
+        {
+            textBox2.UseSystemPasswordChar = !checkBoxShowPassword.Checked;
         }
     }
 }
