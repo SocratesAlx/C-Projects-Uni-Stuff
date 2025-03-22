@@ -36,7 +36,7 @@ namespace SokProodos
                 {
                     connection.Open();
 
-                    // 🎯 Load Unique Years
+                    // Year Filter
                     string yearQuery = "SELECT DISTINCT YEAR(OrderDate) AS OrderYear FROM Sales.SalesOrderHeader ORDER BY OrderYear DESC;";
                     using (SqlCommand command = new SqlCommand(yearQuery, connection))
                     using (SqlDataReader reader = command.ExecuteReader())
@@ -45,7 +45,7 @@ namespace SokProodos
                         while (reader.Read()) comboBoxYear.Items.Add(reader.GetInt32(0).ToString());
                     }
 
-                    // 🎯 Load Unique Months
+                    // Month Filter
                     comboBoxMonth.Items.Add("All");
                     string[] months = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.MonthNames;
                     for (int i = 0; i < months.Length - 1; i++)
@@ -53,13 +53,13 @@ namespace SokProodos
                         comboBoxMonth.Items.Add(months[i]);
                     }
 
-                    // 🎯 Load Customers
+                    // Customer Filter
                     string customerQuery = @"
-                        SELECT DISTINCT c.CustomerID, ISNULL(p.FirstName + ' ' + p.LastName, s.Name) AS CustomerName
-                        FROM Sales.Customer c
-                        LEFT JOIN Person.Person p ON c.PersonID = p.BusinessEntityID
-                        LEFT JOIN Sales.Store s ON c.StoreID = s.BusinessEntityID
-                        ORDER BY CustomerName ASC;";
+                SELECT DISTINCT c.CustomerID, ISNULL(p.FirstName + ' ' + p.LastName, s.Name) AS CustomerName
+                FROM Sales.Customer c
+                LEFT JOIN Person.Person p ON c.PersonID = p.BusinessEntityID
+                LEFT JOIN Sales.Store s ON c.StoreID = s.BusinessEntityID
+                ORDER BY CustomerName ASC;";
 
                     using (SqlCommand command = new SqlCommand(customerQuery, connection))
                     using (SqlDataReader reader = command.ExecuteReader())
@@ -71,11 +71,25 @@ namespace SokProodos
                         }
                     }
 
-                    // Set Display for Customer ComboBox
+                    // Product Filter
+                    string productQuery = "SELECT ProductID, Name FROM Production.Product ORDER BY Name ASC";
+                    using (SqlCommand command = new SqlCommand(productQuery, connection))
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        comboBoxProduct.Items.Add("All");
+                        while (reader.Read())
+                        {
+                            comboBoxProduct.Items.Add(new KeyValuePair<int, string>(reader.GetInt32(0), reader.GetString(1)));
+                        }
+                    }
+
+                    // Display settings
                     comboBoxCustomer.DisplayMember = "Value";
                     comboBoxCustomer.ValueMember = "Key";
 
-                    // Enable typing/search in combo boxes
+                    comboBoxProduct.DisplayMember = "Value";
+                    comboBoxProduct.ValueMember = "Key";
+
                     comboBoxYear.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
                     comboBoxYear.AutoCompleteSource = AutoCompleteSource.ListItems;
 
@@ -85,10 +99,17 @@ namespace SokProodos
                     comboBoxCustomer.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
                     comboBoxCustomer.AutoCompleteSource = AutoCompleteSource.ListItems;
 
-                    // Default selections
+                    comboBoxProduct.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                    comboBoxProduct.AutoCompleteSource = AutoCompleteSource.ListItems;
+
+                    // Default values
                     comboBoxYear.SelectedIndex = 0;
                     comboBoxMonth.SelectedIndex = 0;
                     comboBoxCustomer.SelectedIndex = 0;
+                    comboBoxProduct.SelectedIndex = 0;
+
+                    // Attach event
+                    comboBoxProduct.SelectedIndexChanged += new EventHandler(FilterOrders);
                 }
                 catch (Exception ex)
                 {
@@ -97,7 +118,8 @@ namespace SokProodos
             }
         }
 
-       
+
+
         private void Button_MouseEnter(object sender, EventArgs e)
         {
             ((Button)sender).BackColor = Color.FromArgb(114, 137, 218); // Lighter blue on hover
@@ -118,33 +140,37 @@ namespace SokProodos
 
                     string query = @"
                         SELECT 
-                            soh.SalesOrderID AS 'Order ID',
-                            soh.OrderDate AS 'Order Date',
-                            soh.DueDate AS 'Due Date',
-                            c.CustomerID AS 'Customer ID',
-                            ISNULL(p.FirstName + ' ' + p.LastName, s.Name) AS 'Customer Name',
-                            sp.BusinessEntityID AS 'Seller ID',
-                            per.FirstName + ' ' + per.LastName AS 'Seller Name',
-                            soh.TotalDue AS 'Total Amount',
-                            sm.Name AS 'Shipping Method',
-                            soh.BillToAddressID AS 'Billing Address ID',
-                            a.AddressLine1 + ', ' + a.City AS 'Billing Address',
-                            sod.SpecialOfferID AS 'Special Offer ID',
-                            so.Description AS 'Special Offer',
-                            sod.OrderQty AS 'Order Quantity',
-                            sod.UnitPrice AS 'Unit Price',
-                            (sod.UnitPrice * sod.OrderQty) AS 'Total Price'
-                        FROM Sales.SalesOrderHeader soh
-                        JOIN Sales.Customer c ON soh.CustomerID = c.CustomerID
-                        LEFT JOIN Person.Person p ON c.PersonID = p.BusinessEntityID
-                        LEFT JOIN Sales.Store s ON c.StoreID = s.BusinessEntityID
-                        LEFT JOIN Sales.SalesPerson sp ON soh.SalesPersonID = sp.BusinessEntityID
-                        LEFT JOIN Person.Person per ON sp.BusinessEntityID = per.BusinessEntityID
-                        LEFT JOIN Sales.SalesOrderDetail sod ON soh.SalesOrderID = sod.SalesOrderID
-                        LEFT JOIN Sales.SpecialOffer so ON sod.SpecialOfferID = so.SpecialOfferID
-                        LEFT JOIN Purchasing.ShipMethod sm ON soh.ShipMethodID = sm.ShipMethodID
-                        LEFT JOIN Person.Address a ON soh.BillToAddressID = a.AddressID
-                        ORDER BY soh.OrderDate DESC;";
+    soh.SalesOrderID AS 'Order ID',
+    soh.OrderDate AS 'Order Date',
+    soh.DueDate AS 'Due Date',
+    c.CustomerID AS 'Customer ID',
+    ISNULL(p.FirstName + ' ' + p.LastName, s.Name) AS 'Customer Name',
+    sp.BusinessEntityID AS 'Seller ID',
+    per.FirstName + ' ' + per.LastName AS 'Seller Name',
+    soh.TotalDue AS 'Total Amount',
+    sm.Name AS 'Shipping Method',
+    soh.BillToAddressID AS 'Billing Address ID',
+    a.AddressLine1 + ', ' + a.City AS 'Billing Address',
+    sod.SpecialOfferID AS 'Special Offer ID',
+    so.Description AS 'Special Offer',
+    sod.OrderQty AS 'Order Quantity',
+    sod.UnitPrice AS 'Unit Price',
+    (sod.UnitPrice * sod.OrderQty) AS 'Total Price',
+    sod.ProductID AS 'Product ID',
+    pr.Name AS 'Product Name'
+FROM Sales.SalesOrderHeader soh
+JOIN Sales.Customer c ON soh.CustomerID = c.CustomerID
+LEFT JOIN Person.Person p ON c.PersonID = p.BusinessEntityID
+LEFT JOIN Sales.Store s ON c.StoreID = s.BusinessEntityID
+LEFT JOIN Sales.SalesPerson sp ON soh.SalesPersonID = sp.BusinessEntityID
+LEFT JOIN Person.Person per ON sp.BusinessEntityID = per.BusinessEntityID
+LEFT JOIN Sales.SalesOrderDetail sod ON soh.SalesOrderID = sod.SalesOrderID
+LEFT JOIN Sales.SpecialOffer so ON sod.SpecialOfferID = so.SpecialOfferID
+LEFT JOIN Purchasing.ShipMethod sm ON soh.ShipMethodID = sm.ShipMethodID
+LEFT JOIN Person.Address a ON soh.BillToAddressID = a.AddressID
+LEFT JOIN Production.Product pr ON sod.ProductID = pr.ProductID
+ORDER BY soh.OrderDate DESC;
+ ";
 
                     using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
                     {
@@ -165,6 +191,7 @@ namespace SokProodos
             string yearFilter = comboBoxYear.SelectedItem.ToString();
             string monthFilter = comboBoxMonth.SelectedItem.ToString();
             var customerFilter = comboBoxCustomer.SelectedItem;
+            var productFilter = comboBoxProduct.SelectedItem;
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -172,22 +199,39 @@ namespace SokProodos
                 {
                     connection.Open();
 
-                    // Base query
                     string query = @"
-                SELECT soh.SalesOrderID, soh.OrderDate, soh.DueDate, 
-                       c.CustomerID, ISNULL(p.FirstName + ' ' + p.LastName, s.Name) AS CustomerName,
-                       sp.BusinessEntityID, per.FirstName + ' ' + per.LastName AS SellerName,
-                       soh.TotalDue, sm.Name AS ShippingMethod
+                SELECT 
+                    soh.SalesOrderID AS 'Order ID',
+                    soh.OrderDate AS 'Order Date',
+                    soh.DueDate AS 'Due Date',
+                    c.CustomerID AS 'Customer ID',
+                    ISNULL(p.FirstName + ' ' + p.LastName, s.Name) AS 'Customer Name',
+                    sp.BusinessEntityID AS 'Seller ID',
+                    per.FirstName + ' ' + per.LastName AS 'Seller Name',
+                    soh.TotalDue AS 'Total Amount',
+                    sm.Name AS 'Shipping Method',
+                    soh.BillToAddressID AS 'Billing Address ID',
+                    a.AddressLine1 + ', ' + a.City AS 'Billing Address',
+                    sod.SpecialOfferID AS 'Special Offer ID',
+                    so.Description AS 'Special Offer',
+                    sod.OrderQty AS 'Order Quantity',
+                    sod.UnitPrice AS 'Unit Price',
+                    (sod.UnitPrice * sod.OrderQty) AS 'Total Price',
+                    sod.ProductID AS 'Product ID',
+                    pr.Name AS 'Product Name'
                 FROM Sales.SalesOrderHeader soh
                 JOIN Sales.Customer c ON soh.CustomerID = c.CustomerID
                 LEFT JOIN Person.Person p ON c.PersonID = p.BusinessEntityID
                 LEFT JOIN Sales.Store s ON c.StoreID = s.BusinessEntityID
                 LEFT JOIN Sales.SalesPerson sp ON soh.SalesPersonID = sp.BusinessEntityID
                 LEFT JOIN Person.Person per ON sp.BusinessEntityID = per.BusinessEntityID
+                LEFT JOIN Sales.SalesOrderDetail sod ON soh.SalesOrderID = sod.SalesOrderID
+                LEFT JOIN Sales.SpecialOffer so ON sod.SpecialOfferID = so.SpecialOfferID
                 LEFT JOIN Purchasing.ShipMethod sm ON soh.ShipMethodID = sm.ShipMethodID
-                WHERE 1 = 1";
+                LEFT JOIN Person.Address a ON soh.BillToAddressID = a.AddressID
+                LEFT JOIN Production.Product pr ON sod.ProductID = pr.ProductID
+                WHERE 1=1";
 
-                    // Add filters dynamically
                     List<SqlParameter> parameters = new List<SqlParameter>();
 
                     if (yearFilter != "All")
@@ -210,11 +254,17 @@ namespace SokProodos
                         parameters.Add(new SqlParameter("@CustomerID", customerId));
                     }
 
+                    if (productFilter != null && productFilter.ToString() != "All")
+                    {
+                        int productId = ((KeyValuePair<int, string>)productFilter).Key;
+                        query += " AND sod.ProductID = @ProductID";
+                        parameters.Add(new SqlParameter("@ProductID", productId));
+                    }
+
                     query += " ORDER BY soh.OrderDate DESC;";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        // Add parameters
                         command.Parameters.AddRange(parameters.ToArray());
 
                         using (SqlDataAdapter adapter = new SqlDataAdapter(command))
@@ -235,6 +285,7 @@ namespace SokProodos
 
 
 
+
         private void buttonClose_Click_Click(object sender, EventArgs e)
         {
             MainForm MainForm = new MainForm();
@@ -245,6 +296,11 @@ namespace SokProodos
         }
 
         private void dataGridViewOrderHistory_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void comboBoxProduct_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

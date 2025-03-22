@@ -35,7 +35,7 @@ namespace SokProodos
                 this.Invoke(new Action(() =>
                 {
                     this.Hide();
-                    this.Dispose();  // Ensure disposal after hiding
+                    this.Dispose();  // dokimh dispose meta apo hide giati mono me to hide xtupaei
                 }));
             }
         }
@@ -46,6 +46,11 @@ namespace SokProodos
 
 
         private void LoadingScreen_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
         {
 
         }

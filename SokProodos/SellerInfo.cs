@@ -97,14 +97,14 @@ namespace SokProodos
                             DataTable dt = new DataTable();
                             adapter.Fill(dt);
 
-                            // Assign data to DataGridView
+                            
                             dataGridViewSellerInfo.DataSource = dt;
 
-                            // ✅ Ensure `Seller ID` column is visible and properly formatted
+                            
                             if (dataGridViewSellerInfo.Columns["Seller ID"] != null)
                             {
-                                dataGridViewSellerInfo.Columns["Seller ID"].DisplayIndex = 0;  // Move `Seller ID` to first column
-                                dataGridViewSellerInfo.Columns["Seller ID"].Width = 80;       // Set column width for better readability
+                                dataGridViewSellerInfo.Columns["Seller ID"].DisplayIndex = 0;  
+                                dataGridViewSellerInfo.Columns["Seller ID"].Width = 80;       
                             }
                         }
                     }

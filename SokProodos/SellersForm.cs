@@ -23,12 +23,12 @@ namespace SokProodos
 
         private void Button_MouseEnter(object sender, EventArgs e)
         {
-            ((Button)sender).BackColor = Color.FromArgb(114, 137, 218); // Lighter blue on hover
+            ((Button)sender).BackColor = Color.FromArgb(114, 137, 218); 
         }
 
         private void Button_MouseLeave(object sender, EventArgs e)
         {
-            ((Button)sender).BackColor = Color.FromArgb(88, 101, 242); // Normal state
+            ((Button)sender).BackColor = Color.FromArgb(88, 101, 242); 
         }
 
         private void LoadSalesTerritories()
@@ -53,7 +53,7 @@ namespace SokProodos
                             int territoryID = reader.GetInt32(0);
                             string territoryName = reader.GetString(1);
 
-                            // ✅ Populate both combo boxes with the same KeyValuePair
+                            
                             KeyValuePair<int, string> territoryEntry = new KeyValuePair<int, string>(territoryID, territoryName);
 
                             comboBoxTerritoryID.Items.Add(territoryEntry);
@@ -61,16 +61,16 @@ namespace SokProodos
                         }
                     }
 
-                    comboBoxTerritoryID.DisplayMember = "Key"; // Show Territory ID in this box
+                    comboBoxTerritoryID.DisplayMember = "Key"; 
                     comboBoxTerritoryID.ValueMember = "Key";
 
-                    comboBoxTerritory.DisplayMember = "Value"; // Show Territory Name in this box
+                    comboBoxTerritory.DisplayMember = "Value"; 
                     comboBoxTerritory.ValueMember = "Key";
 
                     comboBoxTerritoryID.SelectedIndex = -1;
                     comboBoxTerritory.SelectedIndex = -1;
 
-                    // ✅ Add event handlers for automatic sync
+                    
                     comboBoxTerritory.SelectedIndexChanged += comboBoxTerritory_SelectedIndexChanged;
                     comboBoxTerritoryID.SelectedIndexChanged += comboBoxTerritoryID_SelectedIndexChanged;
                 }
@@ -82,7 +82,7 @@ namespace SokProodos
         }
 
 
-
+        // ton exei piei
         private void InsertSeller(string sellerName, decimal salesQuota, decimal bonus, decimal commissionPct, decimal salesYTD, decimal salesLastYear, int territoryId)
         {
             string connectionString = @"Server=SOCHAX\SQLEXPRESS;Database=AdventureWorks2022;Trusted_Connection=True;";
@@ -93,7 +93,7 @@ namespace SokProodos
                 {
                     connection.Open();
 
-                    // ✅ Step 1: Insert into Person.BusinessEntity to get BusinessEntityID
+                    
                     string businessEntityQuery = "INSERT INTO Person.BusinessEntity (rowguid, ModifiedDate) VALUES (NEWID(), GETDATE()); SELECT SCOPE_IDENTITY();";
                     int businessEntityId;
                     using (SqlCommand businessCmd = new SqlCommand(businessEntityQuery, connection))
@@ -101,7 +101,7 @@ namespace SokProodos
                         businessEntityId = Convert.ToInt32(businessCmd.ExecuteScalar());
                     }
 
-                    // ✅ Step 2: Insert into Person.Person
+                    
                     string personQuery = @"
             INSERT INTO Person.Person (BusinessEntityID, PersonType, FirstName, LastName, ModifiedDate)
             VALUES (@BusinessEntityID, 'EM', @FirstName, @LastName, GETDATE());";
@@ -114,7 +114,7 @@ namespace SokProodos
                         personCmd.ExecuteNonQuery();
                     }
 
-                    // Random ID generation gia na kanw prevent ta duplicates
+                    
                     string uniqueNationalID = new Random().Next(100000000, 999999999).ToString();
 
                     string employeeQuery = @"
@@ -124,12 +124,12 @@ VALUES (@BusinessEntityID, @NationalIDNumber, 'adventure-works\seller' + CAST(@B
                     using (SqlCommand employeeCmd = new SqlCommand(employeeQuery, connection))
                     {
                         employeeCmd.Parameters.AddWithValue("@BusinessEntityID", businessEntityId);
-                        employeeCmd.Parameters.AddWithValue("@NationalIDNumber", uniqueNationalID); // Ensure unique ID
+                        employeeCmd.Parameters.AddWithValue("@NationalIDNumber", uniqueNationalID); 
                         employeeCmd.ExecuteNonQuery();
                     }
 
 
-                    // ✅ Step 4: Insert into Sales.SalesPerson
+                    
                     string sellerQuery = @"
             INSERT INTO Sales.SalesPerson (BusinessEntityID, SalesQuota, Bonus, CommissionPct, SalesYTD, SalesLastYear, TerritoryID, rowguid, ModifiedDate)
             VALUES (@BusinessEntityID, @SalesQuota, @Bonus, @CommissionPct, @SalesYTD, @SalesLastYear, @TerritoryID, NEWID(), GETDATE());";
@@ -148,7 +148,7 @@ VALUES (@BusinessEntityID, @NationalIDNumber, 'adventure-works\seller' + CAST(@B
 
                     MessageBox.Show("Seller added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // ✅ Reset input fields
+                    
                     textBoxSellerName.Clear();
                     textBoxSalesQuota.Clear();
                     textBoxBonus.Clear();
@@ -186,7 +186,7 @@ VALUES (@BusinessEntityID, @NationalIDNumber, 'adventure-works\seller' + CAST(@B
                 return;
             }
 
-            // ✅ Validate TerritoryID from comboBoxTerritoryID
+            
             int territoryId = comboBoxTerritoryID.SelectedItem != null
                 ? ((KeyValuePair<int, string>)comboBoxTerritoryID.SelectedItem).Key
                 : 0;
@@ -259,7 +259,7 @@ VALUES (@BusinessEntityID, @NationalIDNumber, 'adventure-works\seller' + CAST(@B
             {
                 int selectedTerritoryID = ((KeyValuePair<int, string>)comboBoxTerritoryID.SelectedItem).Key;
 
-                // ✅ Sync the Territory combo box
+                
                 comboBoxTerritory.SelectedItem = comboBoxTerritory.Items.Cast<KeyValuePair<int, string>>()
                     .FirstOrDefault(kvp => kvp.Key == selectedTerritoryID);
             }
@@ -368,16 +368,16 @@ VALUES (@BusinessEntityID, @NationalIDNumber, 'adventure-works\seller' + CAST(@B
                                 textBoxSalesYTD.Text = reader["SalesYTD"].ToString();
                                 textBoxSalesLastYear.Text = reader["SalesLastYear"].ToString();
 
-                                // ✅ Get TerritoryID
+                                
                                 if (reader["TerritoryID"] != DBNull.Value)
                                 {
                                     int territoryID = Convert.ToInt32(reader["TerritoryID"]);
 
-                                    // ✅ Select the correct Territory ID in comboBoxTerritoryID
+                                    
                                     comboBoxTerritoryID.SelectedItem = comboBoxTerritoryID.Items.Cast<KeyValuePair<int, string>>()
                                         .FirstOrDefault(kvp => kvp.Key == territoryID);
 
-                                    // ✅ Select the correct Territory Name in comboBoxTerritory
+                                    
                                     comboBoxTerritory.SelectedItem = comboBoxTerritory.Items.Cast<KeyValuePair<int, string>>()
                                         .FirstOrDefault(kvp => kvp.Key == territoryID);
                                 }
@@ -416,7 +416,7 @@ VALUES (@BusinessEntityID, @NationalIDNumber, 'adventure-works\seller' + CAST(@B
             {
                 int selectedTerritoryID = ((KeyValuePair<int, string>)comboBoxTerritory.SelectedItem).Key;
 
-                // ✅ Sync the TerritoryID combo box
+                
                 comboBoxTerritoryID.SelectedItem = comboBoxTerritoryID.Items.Cast<KeyValuePair<int, string>>()
                     .FirstOrDefault(kvp => kvp.Key == selectedTerritoryID);
             }

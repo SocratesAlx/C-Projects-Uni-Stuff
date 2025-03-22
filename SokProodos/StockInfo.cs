@@ -109,7 +109,7 @@ namespace SokProodos
                             DataTable dt = new DataTable();
                             adapter.Fill(dt);
 
-                            // Assign data to DataGridView
+                            
                             dataGridViewStockInfo.DataSource = dt;
                         }
                     }

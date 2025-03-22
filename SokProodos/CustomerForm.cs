@@ -23,17 +23,17 @@ namespace SokProodos
 
         private void Button_MouseEnter(object sender, EventArgs e)
         {
-            ((Button)sender).BackColor = Color.FromArgb(114, 137, 218); // Lighter blue on hover
+            ((Button)sender).BackColor = Color.FromArgb(114, 137, 218); 
         }
 
         private void Button_MouseLeave(object sender, EventArgs e)
         {
-            ((Button)sender).BackColor = Color.FromArgb(88, 101, 242); // Normal state
+            ((Button)sender).BackColor = Color.FromArgb(88, 101, 242); 
         }
 
         private void LoadStates()
         {
-            comboBoxState.Items.Clear(); // Clear previous items
+            comboBoxState.Items.Clear(); 
 
             string connectionString = @"Server=SOCHAX\SQLEXPRESS;Database=AdventureWorks2022;Trusted_Connection=True;";
 
@@ -56,7 +56,7 @@ namespace SokProodos
 
             comboBoxState.DisplayMember = "Value";
             comboBoxState.ValueMember = "Key";
-            comboBoxState.SelectedIndex = -1; // No selection initially
+            comboBoxState.SelectedIndex = -1; 
         }
 
 
@@ -96,7 +96,7 @@ namespace SokProodos
                     connection.Open();
                     SqlTransaction transaction = connection.BeginTransaction();
 
-                    // Step 1: Insert into Person.BusinessEntity
+                    
                     string businessEntityInsertQuery = "INSERT INTO Person.BusinessEntity DEFAULT VALUES; SELECT SCOPE_IDENTITY();";
                     int businessEntityId;
                     using (SqlCommand cmd = new SqlCommand(businessEntityInsertQuery, connection, transaction))
@@ -104,7 +104,7 @@ namespace SokProodos
                         businessEntityId = Convert.ToInt32(cmd.ExecuteScalar());
                     }
 
-                    // Step 2: Insert into Person.Person
+                    
                     string personInsertQuery = @"
             INSERT INTO Person.Person (BusinessEntityID, FirstName, LastName, PersonType)
             VALUES (@BusinessEntityID, @FirstName, @LastName, 'IN')";
@@ -117,7 +117,7 @@ namespace SokProodos
                         cmd.ExecuteNonQuery();
                     }
 
-                    // Step 3: Insert into Person.Address
+                    
                     string addressInsertQuery = @"
             INSERT INTO Person.Address (AddressLine1, City, StateProvinceID, PostalCode)
             OUTPUT INSERTED.AddressID
@@ -133,10 +133,10 @@ namespace SokProodos
                         addressId = Convert.ToInt32(cmd.ExecuteScalar());
                     }
 
-                    // Step 4: Insert into Person.BusinessEntityAddress to link Customer and Address
+                    
                     string businessEntityAddressInsertQuery = @"
             INSERT INTO Person.BusinessEntityAddress (BusinessEntityID, AddressID, AddressTypeID)
-            VALUES (@BusinessEntityID, @AddressID, 1)";  // AddressTypeID = 1 (Billing Address)
+            VALUES (@BusinessEntityID, @AddressID, 1)";  
 
                     using (SqlCommand cmd = new SqlCommand(businessEntityAddressInsertQuery, connection, transaction))
                     {
@@ -145,7 +145,7 @@ namespace SokProodos
                         cmd.ExecuteNonQuery();
                     }
 
-                    // ✅ Step 5: Insert into Sales.Customer without BillToAddressID
+                    
                     string customerInsertQuery = @"
             INSERT INTO Sales.Customer (PersonID)
             VALUES (@PersonID)";
@@ -159,7 +159,7 @@ namespace SokProodos
                     transaction.Commit();
                     MessageBox.Show("Customer and Billing Address added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // ✅ Reset form for new entry
+                    
                     ResetForm();
                 }
                 catch (Exception ex)
@@ -197,7 +197,7 @@ namespace SokProodos
                 {
                     connection.Open();
 
-                    // Step 1: Insert into Person.BusinessEntity to get a new BusinessEntityID
+                    // insert se business entity id sto person.person
                     string businessEntityQuery = "INSERT INTO Person.BusinessEntity (rowguid, ModifiedDate) VALUES (NEWID(), GETDATE()); SELECT SCOPE_IDENTITY();";
 
                     int businessEntityId;
@@ -206,7 +206,7 @@ namespace SokProodos
                         businessEntityId = Convert.ToInt32(businessCmd.ExecuteScalar());
                     }
 
-                    // Step 2: Insert into Person.Person with the new BusinessEntityID
+                    
                     string personQuery = @"
                 INSERT INTO Person.Person (BusinessEntityID, FirstName, LastName, PersonType, ModifiedDate)
                 VALUES (@BusinessEntityID, @FirstName, @LastName, 'IN', GETDATE());";
@@ -219,7 +219,7 @@ namespace SokProodos
                         personCmd.ExecuteNonQuery();
                     }
 
-                    // Step 3: Insert Email if provided
+                    
                     if (!string.IsNullOrWhiteSpace(email))
                     {
                         string emailQuery = @"
@@ -234,7 +234,7 @@ namespace SokProodos
                         }
                     }
 
-                    // Step 4: Insert Phone Number if provided
+                    
                     if (!string.IsNullOrWhiteSpace(phoneNumber))
                     {
                         string phoneQuery = @"
@@ -249,7 +249,7 @@ namespace SokProodos
                         }
                     }
 
-                    // Step 5: Insert into Sales.Customer WITHOUT AccountNumber (SQL Server generates it)
+                    // insert xwris account number gt einai auto incremented
                     string customerQuery = @"
                 INSERT INTO Sales.Customer (PersonID, StoreID, TerritoryID, ModifiedDate)
                 VALUES (@BusinessEntityID, NULL, NULL, GETDATE());";
@@ -262,7 +262,7 @@ namespace SokProodos
 
                     MessageBox.Show("Customer added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Clear input fields
+                    
                     textBoxFirstName.Clear();
                     textBoxLastName.Clear();
                     textBoxEmail.Clear();

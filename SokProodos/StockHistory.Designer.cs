@@ -36,8 +36,12 @@
             this.labelProductName = new System.Windows.Forms.Label();
             this.labelProductID = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStockHistory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridViewStockHistory
@@ -53,7 +57,7 @@
             this.buttonReresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.buttonReresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonReresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonReresh.Location = new System.Drawing.Point(855, 462);
+            this.buttonReresh.Location = new System.Drawing.Point(123, 463);
             this.buttonReresh.Name = "buttonReresh";
             this.buttonReresh.Size = new System.Drawing.Size(130, 38);
             this.buttonReresh.TabIndex = 1;
@@ -77,7 +81,7 @@
             // comboBoxProductName
             // 
             this.comboBoxProductName.FormattingEnabled = true;
-            this.comboBoxProductName.Location = new System.Drawing.Point(165, 41);
+            this.comboBoxProductName.Location = new System.Drawing.Point(128, 34);
             this.comboBoxProductName.Name = "comboBoxProductName";
             this.comboBoxProductName.Size = new System.Drawing.Size(138, 21);
             this.comboBoxProductName.TabIndex = 3;
@@ -85,7 +89,7 @@
             // 
             // textBoxProductID
             // 
-            this.textBoxProductID.Location = new System.Drawing.Point(165, 89);
+            this.textBoxProductID.Location = new System.Drawing.Point(128, 68);
             this.textBoxProductID.Name = "textBoxProductID";
             this.textBoxProductID.Size = new System.Drawing.Size(138, 20);
             this.textBoxProductID.TabIndex = 4;
@@ -95,7 +99,7 @@
             // 
             this.labelProductName.AutoSize = true;
             this.labelProductName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelProductName.Location = new System.Drawing.Point(32, 40);
+            this.labelProductName.Location = new System.Drawing.Point(6, 33);
             this.labelProductName.Name = "labelProductName";
             this.labelProductName.Size = new System.Drawing.Size(116, 18);
             this.labelProductName.TabIndex = 5;
@@ -105,7 +109,7 @@
             // 
             this.labelProductID.AutoSize = true;
             this.labelProductID.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelProductID.Location = new System.Drawing.Point(32, 91);
+            this.labelProductID.Location = new System.Drawing.Point(6, 67);
             this.labelProductID.Name = "labelProductID";
             this.labelProductID.Size = new System.Drawing.Size(88, 18);
             this.labelProductID.TabIndex = 6;
@@ -114,30 +118,54 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::SokProodos.Properties.Resources.awc_logo;
-            this.pictureBox1.Location = new System.Drawing.Point(333, 401);
+            this.pictureBox1.Location = new System.Drawing.Point(478, 400);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(516, 100);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::SokProodos.Properties.Resources.pngwing_com__19_;
+            this.pictureBox2.Location = new System.Drawing.Point(-133, -89);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(1142, 589);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 8;
+            this.pictureBox2.TabStop = false;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.groupBox1.Controls.Add(this.comboBoxProductName);
+            this.groupBox1.Controls.Add(this.labelProductName);
+            this.groupBox1.Controls.Add(this.textBoxProductID);
+            this.groupBox1.Controls.Add(this.labelProductID);
+            this.groupBox1.Location = new System.Drawing.Point(12, 22);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(274, 109);
+            this.groupBox1.TabIndex = 9;
+            this.groupBox1.TabStop = false;
+            // 
             // StockHistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1006, 512);
+            this.ClientSize = new System.Drawing.Size(1006, 522);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.labelProductID);
-            this.Controls.Add(this.labelProductName);
-            this.Controls.Add(this.textBoxProductID);
-            this.Controls.Add(this.comboBoxProductName);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonReresh);
             this.Controls.Add(this.dataGridViewStockHistory);
+            this.Controls.Add(this.pictureBox2);
             this.Name = "StockHistory";
             this.Text = "StockHistory";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStockHistory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -153,5 +181,7 @@
         private System.Windows.Forms.Label labelProductName;
         private System.Windows.Forms.Label labelProductID;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

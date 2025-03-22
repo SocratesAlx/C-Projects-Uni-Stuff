@@ -30,14 +30,20 @@
         {
             this.dataGridViewOrderHistory = new System.Windows.Forms.DataGridView();
             this.buttonClose_Click = new System.Windows.Forms.Button();
-            this.comboBoxYear = new System.Windows.Forms.ComboBox();
-            this.comboBoxMonth = new System.Windows.Forms.ComboBox();
-            this.comboBoxCustomer = new System.Windows.Forms.ComboBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.labelYear = new System.Windows.Forms.Label();
+            this.comboBoxCustomer = new System.Windows.Forms.ComboBox();
             this.labelMonth = new System.Windows.Forms.Label();
+            this.comboBoxMonth = new System.Windows.Forms.ComboBox();
             this.labelCustomer = new System.Windows.Forms.Label();
+            this.comboBoxYear = new System.Windows.Forms.ComboBox();
+            this.labelProduct = new System.Windows.Forms.Label();
+            this.comboBoxProduct = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrderHistory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,7 +52,7 @@
             this.dataGridViewOrderHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewOrderHistory.Location = new System.Drawing.Point(364, 22);
             this.dataGridViewOrderHistory.Name = "dataGridViewOrderHistory";
-            this.dataGridViewOrderHistory.Size = new System.Drawing.Size(670, 401);
+            this.dataGridViewOrderHistory.Size = new System.Drawing.Size(698, 312);
             this.dataGridViewOrderHistory.TabIndex = 0;
             this.dataGridViewOrderHistory.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewOrderHistory_CellContentClick);
             // 
@@ -63,21 +69,35 @@
             this.buttonClose_Click.UseVisualStyleBackColor = false;
             this.buttonClose_Click.Click += new System.EventHandler(this.buttonClose_Click_Click);
             // 
-            // comboBoxYear
+            // pictureBox1
             // 
-            this.comboBoxYear.FormattingEnabled = true;
-            this.comboBoxYear.Location = new System.Drawing.Point(108, 19);
-            this.comboBoxYear.Name = "comboBoxYear";
-            this.comboBoxYear.Size = new System.Drawing.Size(143, 21);
-            this.comboBoxYear.TabIndex = 2;
+            this.pictureBox1.Image = global::SokProodos.Properties.Resources.awc_logo;
+            this.pictureBox1.Location = new System.Drawing.Point(546, 340);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(516, 100);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
             // 
-            // comboBoxMonth
+            // pictureBox2
             // 
-            this.comboBoxMonth.FormattingEnabled = true;
-            this.comboBoxMonth.Location = new System.Drawing.Point(108, 67);
-            this.comboBoxMonth.Name = "comboBoxMonth";
-            this.comboBoxMonth.Size = new System.Drawing.Size(143, 21);
-            this.comboBoxMonth.TabIndex = 3;
+            this.pictureBox2.Image = global::SokProodos.Properties.Resources.pngwing_com__19_;
+            this.pictureBox2.Location = new System.Drawing.Point(-47, -69);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(1130, 509);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 10;
+            this.pictureBox2.TabStop = false;
+            // 
+            // labelYear
+            // 
+            this.labelYear.AutoSize = true;
+            this.labelYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelYear.Location = new System.Drawing.Point(11, 19);
+            this.labelYear.Name = "labelYear";
+            this.labelYear.Size = new System.Drawing.Size(43, 20);
+            this.labelYear.TabIndex = 5;
+            this.labelYear.Text = "Year";
             // 
             // comboBoxCustomer
             // 
@@ -87,39 +107,66 @@
             this.comboBoxCustomer.Size = new System.Drawing.Size(143, 21);
             this.comboBoxCustomer.TabIndex = 4;
             // 
-            // labelYear
-            // 
-            this.labelYear.AutoSize = true;
-            this.labelYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelYear.Location = new System.Drawing.Point(11, 19);
-            this.labelYear.Name = "labelYear";
-            this.labelYear.Size = new System.Drawing.Size(47, 20);
-            this.labelYear.TabIndex = 5;
-            this.labelYear.Text = "Year";
-            // 
             // labelMonth
             // 
             this.labelMonth.AutoSize = true;
-            this.labelMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelMonth.Location = new System.Drawing.Point(11, 65);
             this.labelMonth.Name = "labelMonth";
-            this.labelMonth.Size = new System.Drawing.Size(59, 20);
+            this.labelMonth.Size = new System.Drawing.Size(54, 20);
             this.labelMonth.TabIndex = 6;
             this.labelMonth.Text = "Month";
+            // 
+            // comboBoxMonth
+            // 
+            this.comboBoxMonth.FormattingEnabled = true;
+            this.comboBoxMonth.Location = new System.Drawing.Point(108, 67);
+            this.comboBoxMonth.Name = "comboBoxMonth";
+            this.comboBoxMonth.Size = new System.Drawing.Size(143, 21);
+            this.comboBoxMonth.TabIndex = 3;
             // 
             // labelCustomer
             // 
             this.labelCustomer.AutoSize = true;
-            this.labelCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCustomer.Location = new System.Drawing.Point(7, 119);
             this.labelCustomer.Name = "labelCustomer";
-            this.labelCustomer.Size = new System.Drawing.Size(86, 20);
+            this.labelCustomer.Size = new System.Drawing.Size(78, 20);
             this.labelCustomer.TabIndex = 7;
             this.labelCustomer.Text = "Customer";
+            // 
+            // comboBoxYear
+            // 
+            this.comboBoxYear.FormattingEnabled = true;
+            this.comboBoxYear.Location = new System.Drawing.Point(108, 19);
+            this.comboBoxYear.Name = "comboBoxYear";
+            this.comboBoxYear.Size = new System.Drawing.Size(143, 21);
+            this.comboBoxYear.TabIndex = 2;
+            // 
+            // labelProduct
+            // 
+            this.labelProduct.AutoSize = true;
+            this.labelProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelProduct.Location = new System.Drawing.Point(11, 166);
+            this.labelProduct.Name = "labelProduct";
+            this.labelProduct.Size = new System.Drawing.Size(64, 20);
+            this.labelProduct.TabIndex = 8;
+            this.labelProduct.Text = "Product";
+            // 
+            // comboBoxProduct
+            // 
+            this.comboBoxProduct.FormattingEnabled = true;
+            this.comboBoxProduct.Location = new System.Drawing.Point(108, 164);
+            this.comboBoxProduct.Name = "comboBoxProduct";
+            this.comboBoxProduct.Size = new System.Drawing.Size(143, 21);
+            this.comboBoxProduct.TabIndex = 9;
+            this.comboBoxProduct.SelectedIndexChanged += new System.EventHandler(this.comboBoxProduct_SelectedIndexChanged);
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.groupBox1.Controls.Add(this.comboBoxProduct);
+            this.groupBox1.Controls.Add(this.labelProduct);
             this.groupBox1.Controls.Add(this.comboBoxYear);
             this.groupBox1.Controls.Add(this.labelCustomer);
             this.groupBox1.Controls.Add(this.comboBoxMonth);
@@ -129,7 +176,7 @@
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.groupBox1.Location = new System.Drawing.Point(31, 39);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(296, 153);
+            this.groupBox1.Size = new System.Drawing.Size(296, 221);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             // 
@@ -138,15 +185,20 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1074, 452);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonClose_Click);
             this.Controls.Add(this.dataGridViewOrderHistory);
+            this.Controls.Add(this.pictureBox2);
             this.Name = "OrderHistoryForm";
             this.Text = "OrderHistoryForm";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrderHistory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -154,12 +206,16 @@
 
         private System.Windows.Forms.DataGridView dataGridViewOrderHistory;
         private System.Windows.Forms.Button buttonClose_Click;
-        private System.Windows.Forms.ComboBox comboBoxYear;
-        private System.Windows.Forms.ComboBox comboBoxMonth;
-        private System.Windows.Forms.ComboBox comboBoxCustomer;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label labelYear;
+        private System.Windows.Forms.ComboBox comboBoxCustomer;
         private System.Windows.Forms.Label labelMonth;
+        private System.Windows.Forms.ComboBox comboBoxMonth;
         private System.Windows.Forms.Label labelCustomer;
+        private System.Windows.Forms.ComboBox comboBoxYear;
+        private System.Windows.Forms.Label labelProduct;
+        private System.Windows.Forms.ComboBox comboBoxProduct;
         private System.Windows.Forms.GroupBox groupBox1;
     }
 }

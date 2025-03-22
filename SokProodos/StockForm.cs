@@ -39,7 +39,7 @@ namespace SokProodos
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         comboBoxSpecialOffer.Items.Clear();
-                        comboBoxSpecialOffer.Items.Add(new KeyValuePair<int, string>(1, "No Discount")); // ✅ Default
+                        comboBoxSpecialOffer.Items.Add(new KeyValuePair<int, string>(1, "No Discount")); 
 
                         while (reader.Read())
                         {
@@ -51,7 +51,7 @@ namespace SokProodos
 
                     comboBoxSpecialOffer.DisplayMember = "Value";
                     comboBoxSpecialOffer.ValueMember = "Key";
-                    comboBoxSpecialOffer.SelectedIndex = 0; // Default to "No Discount"
+                    comboBoxSpecialOffer.SelectedIndex = 0; // default se no discount 
                 }
                 catch (Exception ex)
                 {
@@ -65,12 +65,12 @@ namespace SokProodos
 
         private void Button_MouseEnter(object sender, EventArgs e)
         {
-            ((Button)sender).BackColor = Color.FromArgb(114, 137, 218); // Lighter blue on hover
+            ((Button)sender).BackColor = Color.FromArgb(114, 137, 218); 
         }
 
         private void Button_MouseLeave(object sender, EventArgs e)
         {
-            ((Button)sender).BackColor = Color.FromArgb(88, 101, 242); // Normal state
+            ((Button)sender).BackColor = Color.FromArgb(88, 101, 242); 
         }
 
         private void LoadProductCategories()
@@ -147,7 +147,7 @@ namespace SokProodos
                 {
                     connection.Open();
 
-                    // ✅ Step 1: Insert into `Production.Product`
+                    
                     string insertProductQuery = @"
                 INSERT INTO Production.Product 
                 (Name, ProductNumber, Color, StandardCost, ListPrice, Size, Weight, SafetyStockLevel, 
@@ -155,7 +155,7 @@ namespace SokProodos
                 VALUES 
                 (@Name, @ProductNumber, @Color, @StandardCost, @ListPrice, @Size, @Weight, @SafetyStockLevel, 
                  @ReorderPoint, @DaysToManufacture, @SubcategoryID, @ModelID, GETDATE(), 1);
-                SELECT SCOPE_IDENTITY();";  // ✅ Get the new ProductID
+                SELECT SCOPE_IDENTITY();";  
 
                     int newProductId;
                     using (SqlCommand command = new SqlCommand(insertProductQuery, connection))
@@ -176,7 +176,7 @@ namespace SokProodos
                         newProductId = Convert.ToInt32(command.ExecuteScalar());
                     }
 
-                    // ✅ Step 2: Insert the Special Offer ID into `Sales.SpecialOfferProduct`
+                   
                     if (specialOfferId > 0)
                     {
                         string insertSpecialOfferQuery = @"
@@ -191,14 +191,14 @@ namespace SokProodos
                         }
                     }
 
-                    // ✅ Step 3: Insert Initial Stock into `Production.ProductInventory`
+                    
                     if (initialStockQuantity > 0)
                     {
                         string insertInventoryQuery = @"
                     INSERT INTO Production.ProductInventory 
                     (ProductID, LocationID, Shelf, Bin, Quantity, ModifiedDate)
                     VALUES 
-                    (@ProductID, 1, 'A', 1, @Quantity, GETDATE());";  // ✅ Default LocationID = 1, Shelf 'A', Bin 1
+                    (@ProductID, 1, 'A', 1, @Quantity, GETDATE());";  
 
                         using (SqlCommand inventoryCommand = new SqlCommand(insertInventoryQuery, connection))
                         {
@@ -210,7 +210,7 @@ namespace SokProodos
 
                     MessageBox.Show("Product and stock added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // ✅ Reset form fields
+                    
                     textBoxProductName.Clear();
                     textBoxProductNumber.Clear();
                     textBoxColor.Clear();
@@ -224,7 +224,7 @@ namespace SokProodos
                     textBoxStockQuantity.Clear();
                     comboBoxCategory.SelectedIndex = -1;
                     comboBoxModel.SelectedIndex = -1;
-                    comboBoxSpecialOffer.SelectedIndex = 0; // Reset Special Offer
+                    comboBoxSpecialOffer.SelectedIndex = 0; 
                 }
                 catch (Exception ex)
                 {
@@ -246,14 +246,14 @@ namespace SokProodos
             int safetyStockLevel, reorderPoint, daysToManufacture, initialStockQuantity;
             string size = textBoxSize.Text.Trim();
 
-            // New fields
-            bool makeFlag = textBoxMakeFlag.Text == "1";  // Convert to boolean
+            
+            bool makeFlag = textBoxMakeFlag.Text == "1";  
             bool finishedGoodsFlag = textBoxFinishedGoodsFlag.Text == "1";
 
             int subcategoryId = comboBoxCategory.SelectedItem != null ? ((KeyValuePair<int, string>)comboBoxCategory.SelectedItem).Key : 0;
             int modelId = comboBoxModel.SelectedItem != null ? ((KeyValuePair<int, string>)comboBoxModel.SelectedItem).Key : 0;
 
-            // ✅ Validate required fields
+            
             if (string.IsNullOrWhiteSpace(productName) || string.IsNullOrWhiteSpace(productNumber))
             {
                 MessageBox.Show("Product Name and Product Number are required.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -281,17 +281,17 @@ namespace SokProodos
                 return;
             }
 
-            // ✅ Validate Stock Quantity
+            
             if (!int.TryParse(textBoxStockQuantity.Text, out initialStockQuantity) || initialStockQuantity < 0)
             {
                 MessageBox.Show("Enter a valid stock quantity (must be 0 or greater).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // ✅ Read the Special Offer ID from the ComboBox
+            
             int specialOfferId = comboBoxSpecialOffer.SelectedItem != null
                 ? ((KeyValuePair<int, string>)comboBoxSpecialOffer.SelectedItem).Key
-                : 1; // Default to "No Discount" (SpecialOfferID = 1)
+                : 1; 
 
             string connectionString = @"Server=SOCHAX\SQLEXPRESS;Database=AdventureWorks2022;Trusted_Connection=True;";
 
@@ -301,7 +301,7 @@ namespace SokProodos
                 {
                     connection.Open();
 
-                    // ✅ Insert Product
+                    
                     string insertProductQuery = @"
             INSERT INTO Production.Product 
             (Name, ProductNumber, Color, StandardCost, ListPrice, Size, Weight, SafetyStockLevel, 
@@ -309,7 +309,7 @@ namespace SokProodos
             VALUES 
             (@Name, @ProductNumber, @Color, @StandardCost, @ListPrice, @Size, @Weight, @SafetyStockLevel, 
              @ReorderPoint, @DaysToManufacture, @SubcategoryID, @ModelID, GETDATE(), @MakeFlag, @FinishedGoodsFlag);
-            SELECT SCOPE_IDENTITY();";  // ✅ Get the new ProductID
+            SELECT SCOPE_IDENTITY();";  
 
                     int newProductId;
                     using (SqlCommand command = new SqlCommand(insertProductQuery, connection))
@@ -332,7 +332,7 @@ namespace SokProodos
                         newProductId = Convert.ToInt32(command.ExecuteScalar());
                     }
 
-                    textBoxProductID.Text = newProductId.ToString(); // ✅ Set the ProductID in the textbox
+                    textBoxProductID.Text = newProductId.ToString(); 
 
                     MessageBox.Show("Product and stock added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
